@@ -1,12 +1,13 @@
 import React, { useState } from "react";
 import peliculasJSON from "../assets/peliculas.json";
+import './Interpretes.css';
 
 const Interpretes = () => {
   const estadoInicial = peliculasJSON.peliculas;
   const [peliculas, setPeliculas] = useState(estadoInicial);
 
   return (
-    <>
+    <div className="interpretes">
       {peliculas.map((pelicula, i) => (
         <div key={i}>
           <h3>{pelicula.nombre}</h3>
@@ -20,7 +21,7 @@ const Interpretes = () => {
           ))}
         </div>
       ))}
-    </>
+    </div>
   );
 };
 

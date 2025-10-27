@@ -1,0 +1,40 @@
+.submenu_completo {
+  position: fixed;
+  top: 120px;           
+  left: 0;
+  width: 100%;
+  background-color: #270000;  
+  display: flex;
+  justify-content: center;    
+  align-items: center;
+  gap: 25px;
+  padding: 10px 0;
+}
+
+.submenu {
+  text-decoration: none;
+  color: wheat;
+  font-weight: 500;
+  font-family: 'Poppins', sans-serif;
+  font-size: 16px;
+  transition: color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover */
+.submenu:hover {
+  color: #ffdca8;
+  transform: scale(1.05);
+}
+
+/* Responsive para móviles */
+@media (max-width: 600px) {
+  .submenu_completo {
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 8px 0;
+  }
+
+  .submenu {
+    font-size: 14px;
+  }
+}

@@ -1,0 +1,18 @@
+.carteleras {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  margin-top: 10px; 
+  justify-items: center;
+}
+
+.carteleras img {
+  width: 200px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+

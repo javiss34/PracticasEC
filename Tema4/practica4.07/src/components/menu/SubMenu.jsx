@@ -1,10 +1,11 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import './Submenu.css';
 
 const SubMenu = () => {
   return (
     <div>
-      <nav>
+      <nav className="submenu_completo">
         <Link className="submenu" to="/galeria/titulo">
           Título
         </Link>

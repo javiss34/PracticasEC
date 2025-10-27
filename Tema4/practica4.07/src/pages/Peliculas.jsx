@@ -25,6 +25,7 @@ const Peliculas = () => {
           <div className="pelicula" key={i}>
             <h3>{pelicula.nombre}</h3>
             <img
+            className="imagen_pelicula"
               src={pelicula.cartelera}
               alt={pelicula.nombre}
               onClick={() => {

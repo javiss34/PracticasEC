@@ -6,8 +6,9 @@
     justify-content: center;
 }
 
-
 .contenedor_contenido img {
-  width: 300px;
+  width: 230px;
   height: 300px;
+  cursor: pointer;
 }
+
