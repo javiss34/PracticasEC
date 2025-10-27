@@ -1,0 +1,17 @@
+.interprete_alerta{
+    border: 5px solid salmon;
+    display: flex;
+    background-color: salmon;
+    margin: 100px;
+}
+
+.foto{
+    width: 150px;
+    height: 200px;
+    padding: 10px;
+}
+
+.texto{
+    font-family:'Times New Roman', Times, serif;
+}
+

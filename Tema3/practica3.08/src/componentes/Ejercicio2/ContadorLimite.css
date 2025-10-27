@@ -1,0 +1,11 @@
+.contador_limite{
+    color: black;
+    padding: 80px;
+    background-color:beige;
+    margin: 30px;
+}
+.contador_limite_botones{
+    justify-content: center;
+    display: flex;
+    gap: 50px;
+}

@@ -1,0 +1,8 @@
+.contenedor_matricula{
+    padding: 10px;
+    background-color:darkslategrey;
+}
+.botones{
+    display: flex;
+    gap: 15px;
+}

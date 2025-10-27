@@ -1,0 +1,16 @@
+.menu {
+    color: black;
+    display: inline;
+    background-color: wheat;
+    border-radius: 10%;
+    margin: 20px;
+    padding: 10px;
+}
+nav {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background-color: wheat;
+    padding: 10px;
+}

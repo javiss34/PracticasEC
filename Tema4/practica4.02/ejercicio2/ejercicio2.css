@@ -1,0 +1,15 @@
+.tabla {
+    border: 5px solid black;
+}
+
+.tabla td {
+    border: 2px solid black;
+    width: 50px;
+    height: 50px;
+    text-align: center;
+}
+
+.tabla_primo{
+    background-color: red;
+    font-weight: bold;
+}

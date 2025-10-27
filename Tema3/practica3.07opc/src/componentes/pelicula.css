@@ -1,0 +1,47 @@
+.contenedor_entero{
+    background-color: antiquewhite;
+    color: black;
+}
+.titulo_pelicula, .titulo_elenco{
+    text-align: left;
+    margin: 20px;
+}
+
+.cartela{
+    float: left;
+    margin: 15px;
+    width: 200px;
+    height: 300px;
+}
+
+.resumen {
+    margin-top: 130px;
+    margin-right: 100px;
+    padding-bottom: 180px;
+}
+
+.foto_actor {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    width: 80px;
+    height: 100px;
+    margin-left: 40px;
+}
+.contenedor_actores {
+  display: flex;
+  flex-direction: column; 
+  gap: 15px;              
+}
+
+.actor {
+  display: flex;           
+  align-items: flex-start; 
+  gap: 15px;               
+}
+
+.info_actor{
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 80px;
+}

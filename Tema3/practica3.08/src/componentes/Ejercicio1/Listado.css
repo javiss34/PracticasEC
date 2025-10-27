@@ -1,0 +1,16 @@
+.contenedor_listado{
+    background-color:darkslategrey;
+    padding: 80px;
+    margin: 30px;
+}
+
+.listado {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-left: 0;
+}
+
+.listado li {
+    margin-left: 0;
+    padding-left: 2px; 
+}

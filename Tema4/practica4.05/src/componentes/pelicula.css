@@ -1,0 +1,62 @@
+.contenedor_entero {
+  background-color: antiquewhite;
+  color: black;
+}
+.titulo_pelicula,
+.titulo_elenco {
+  text-align: left;
+  margin: 20px;
+}
+
+.cartela {
+  float: left;
+  margin: 15px;
+  width: 200px;
+  height: 300px;
+}
+
+.resumen {
+  margin-top: 70px;
+  margin-right: 100px;
+  padding-bottom: 130px;
+}
+
+.foto_actor {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 80px;
+  height: 100px;
+  margin-left: 40px;
+}
+.contenedor_actores {
+  display: none; /* pongo aqui que este oculto el elenco  */
+}
+
+.actor {
+  display: flex;
+  align-items: flex-start;
+  gap: 15px;
+}
+
+.info_actor {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 80px;
+}
+
+.aparecer_elenco {
+  display: flex; /* Cuando se aplique esto aparecera el elenco */
+  flex-direction: column;
+  gap: 15px;
+}
+
+.contenedor_taquilla {
+    display: none;
+}
+
+.aparecer_taquilla{
+    display: flex;
+    flex-direction:column;
+    gap: 15px;
+}

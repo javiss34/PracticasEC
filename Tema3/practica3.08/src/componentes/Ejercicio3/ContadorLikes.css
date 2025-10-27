@@ -1,0 +1,13 @@
+.contenedor_entero{
+    background-color: salmon;
+    padding: 80px;
+    margin: 30px;
+}
+.contenedor_likes {
+    display: flex;        
+    gap: 80px;              
+    justify-content: center; 
+    margin-top: 80px;
+
+}
+
