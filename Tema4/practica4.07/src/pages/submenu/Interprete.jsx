@@ -1,4 +1,5 @@
 import React from 'react';
+import MostrarCarteleras from '../../components/MostrarCarteleras';
 
 const Interprete = () => {
   return (

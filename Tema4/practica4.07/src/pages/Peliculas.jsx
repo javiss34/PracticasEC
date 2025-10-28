@@ -1,21 +1,12 @@
 import React, { useRef, useState } from "react";
 import peliculasJSON from "../assets/peliculas.json";
 import PeliculaDetalle from "../components/PeliculaDetalle.jsx";
+import {Link} from 'react-router-dom';
 import "./Peliculas.css";
 const Peliculas = () => {
   let estadoInicial = peliculasJSON.peliculas;
-  let [peliculas, setDetallePelicula] = useState(estadoInicial);
-  let [indicePelicula, setIndicePelicula] = useState(null);
+  let [peliculas, setPeliculas] = useState(estadoInicial);
 
-  //He intentado hacerlo con useRef y no me salía,
-  //Así que he hecho esta función que es como un toggle
-  const establecerIndicePelicula = (i) => {
-    if (indicePelicula === i) {
-      setIndicePelicula(null);
-    } else {
-      setIndicePelicula(i);
-    }
-  };
 
   return (
     <>
@@ -24,18 +15,13 @@ const Peliculas = () => {
         {peliculas.map((pelicula, i) => (
           <div className="pelicula" key={i}>
             <h3>{pelicula.nombre}</h3>
+            <Link key={pelicula.id} to={`/peliculas/${pelicula.id}`}>
             <img
             className="imagen_pelicula"
               src={pelicula.cartelera}
               alt={pelicula.nombre}
-              onClick={() => {
-                establecerIndicePelicula(i);
-              }}
             />
-            {/* En la practica me pide el año de exhibición pero como 
-                en el JSON no está pues pongo la clasificación */}
-            <h3>{pelicula.clasificacion}</h3>
-            {indicePelicula === i && <PeliculaDetalle pelicula={pelicula} />}
+            </Link>
           </div>
         ))}
       </div>

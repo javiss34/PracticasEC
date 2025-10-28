@@ -9,6 +9,8 @@ import Titulo from "../pages/submenu/Titulo.jsx";
 import Interprete from "../pages/submenu/Interprete.jsx";
 import Director from "../pages/submenu/Director.jsx";
 import Error from "../pages/Error.jsx";
+import PeliculaDetalle from "../components/PeliculaDetalle.jsx";
+import PeliculasJSON from "../assets/peliculas.json";
 
 const Rutas = () => {
   return (
@@ -23,6 +25,7 @@ const Rutas = () => {
           <Route path="/galeria/director" element={<Director />} />
         </Route>
         <Route path="/acerca-de" element={<AcercaDe />} />
+        <Route path="/peliculas/:id" element={<PeliculaDetalle peliculas={PeliculasJSON.peliculas} />}/>
         <Route path="*" element={<Error/>}/>
       </Routes>
     </>
