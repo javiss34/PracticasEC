@@ -1,7 +1,11 @@
-.info_pestañas{
-    display: none;
+.info_pestañas p {
+  display: none;
 }
 
-.mostrar{
+.info_pestañas p.mostrar {
     display: block;
+    background-color: aquamarine;
+    border: 2px solid;
+    border-radius: 20px;
+    text-align: center;
 }
