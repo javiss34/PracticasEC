@@ -10,4 +10,14 @@
     border-radius: 20px;
     padding: 4px;
     margin: 4px;
+    cursor: pointer;
+}
+
+.contenedor_par {
+    background-color: aquamarine;
+    display: none;
+}
+
+.mostrar{
+    display: flex;
 }
