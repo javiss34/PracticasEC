@@ -13,11 +13,16 @@
     cursor: pointer;
 }
 
+.contenedor_ejercicio > div:nth-child(even) {
+    display: none;
+    background-color: aquamarine;
+}
+
 .contenedor_par {
     background-color: aquamarine;
     display: none;
 }
 
-.mostrar{
-    display: flex;
+.contenedor_ejercicio > div.mostrar {
+  display: flex;
 }
