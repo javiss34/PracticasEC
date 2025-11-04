@@ -1,8 +1,13 @@
 "use strict";
 
+import { crearTabla } from "./biblioteca.js";
+
 window.onload = () => {
+  //Creamos la tabla
+  crearTabla();
+  
   let colorElegido = document.getElementById("elegirColor");
-  console.log(colorElegido)
+  console.log(colorElegido);
 
   let seleccion = "#000000"; //Pongo por defecto el negro.
   let click = false; //Controlo cuando se hace click en el raton
@@ -14,33 +19,20 @@ window.onload = () => {
 
   //Con este evento al clicar en borrar se pone de color blanco
   let botonBorrador = document.getElementById("borrador");
-  botonBorrador.addEventListener(
-    "click",
-    () => {seleccion= "#ffffff"}
-  )
-  
-
-  const crearTabla = () => {
-    let segundoDiv = document.createElement("div");
-    segundoDiv.className = "segundo_div";
-    let tabla = document.createElement("table");
-    tabla.classList.add("tabla");
-    for (let i = 0; i < 60; i++) {
-      let filas = document.createElement("tr");
-      console.log(filas);
-      for (let j = 0; j < 60; j++) {
-        let contenido = document.createElement("td");
-        filas.appendChild(contenido);
-      }
-      tabla.appendChild(filas);
-    }
-    segundoDiv.appendChild(tabla);
-    document.body.appendChild(segundoDiv);
-  };
-  crearTabla();
+  botonBorrador.addEventListener("click", () => {
+    seleccion = "#ffffff";
+  });
 
   //Así accedo a cada celda de la tabla
   let celdas = document.querySelectorAll("div table tr td");
+
+  //Este evento borra todas las celdas
+  let botonBorrar = document.getElementById("borrar");
+  botonBorrar.addEventListener("click", () => {
+    celdas.forEach((c) => {
+      c.style.backgroundColor = "#ffffff";
+    });
+  });
 
   const eventoPintar = (celdas) => {
     celdas.forEach((celda) => {
@@ -66,17 +58,6 @@ window.onload = () => {
       });
     });
   };
-
-
-  let botonBorrar = document.getElementById("borrar");
-  botonBorrar.addEventListener(
-    "click",
-    () => {
-      celdas.forEach((c) => {
-        c.style.backgroundColor = "#ffffff"
-      })
-    }
-  )
 
   eventoPintar(celdas);
   eventoPararDePintar(celdas);

@@ -1,0 +1,6 @@
+.contenedor_imagenes{
+    width: 100px;
+    height: 100px;
+    display: flex;
+    gap: 10px;
+}
