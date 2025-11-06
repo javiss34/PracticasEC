@@ -7,7 +7,6 @@ export const crearTabla = () => {
     tabla.classList.add("tabla");
     for (let i = 0; i < 60; i++) {
       let filas = document.createElement("tr");
-      console.log(filas);
       for (let j = 0; j < 60; j++) {
         let contenido = document.createElement("td");
         filas.appendChild(contenido);

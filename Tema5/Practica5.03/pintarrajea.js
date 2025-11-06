@@ -5,9 +5,9 @@ import { crearTabla } from "./biblioteca.js";
 window.onload = () => {
   //Creamos la tabla
   crearTabla();
+  let  tabla = document.querySelector("div table");
   
   let colorElegido = document.getElementById("elegirColor");
-  console.log(colorElegido);
 
   let seleccion = "#000000"; //Pongo por defecto el negro.
   let click = false; //Controlo cuando se hace click en el raton
@@ -34,31 +34,24 @@ window.onload = () => {
     });
   });
 
-  const eventoPintar = (celdas) => {
-    celdas.forEach((celda) => {
-      //Primero hago un evento cuando empiezo a clicar y el controlador click se pone true
-      celda.addEventListener("mousedown", () => {
-        click = true;
-        celda.style.backgroundColor = seleccion;
-      });
-      //Después hago este evento que si click=true se pinta la celda donde este arrastrando el ratón.
-      celda.addEventListener("mouseover", () => {
-        if (click) {
-          celda.style.backgroundColor = seleccion;
-        }
-      });
-    });
-  };
+  //Con este evento al clickar en cualquier "TD", la variable click se pone true y se pinta el fondo del color seleccionado
+  tabla.addEventListener("mousedown", (evento) => {
+    if (evento.target.tagName === "TD") {
+      click = true;
+      evento.target.style.backgroundColor = seleccion;
+    }
+  });
 
-  //Con este evento al levantar el click se deja de pintar
-  const eventoPararDePintar = (celdas) => {
-    celdas.forEach((celda) => {
-      celda.addEventListener("mouseup", () => {
-        click = false;
-      });
-    });
-  };
+  //Con este evento mientras se mantiene pulsado el click y sea en el "TD" se sigue pintando
+  tabla.addEventListener("mouseover", (evento) => {
+    if (click && evento.target.tagName === "TD") {
+      evento.target.style.backgroundColor = seleccion;
+    }
+  });
 
-  eventoPintar(celdas);
-  eventoPararDePintar(celdas);
+  //Cuando se levanta el click se cambia la variable a false y deja de pintar
+  document.addEventListener("mouseup", () => {
+    click = false;
+  });
+
 };
