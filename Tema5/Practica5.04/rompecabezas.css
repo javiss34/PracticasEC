@@ -1,18 +1,5 @@
-.div_superior{
-    background: linear-gradient(135deg, #004D98 0%, #A50044 100%);
-    padding: 30px;
-    display: grid;
-    grid-template-columns: repeat(5,200px);
-    grid-template-rows: repeat(2,150px);
-    gap: 10px;
-    justify-content: center;
-}
 
-.div_superior img {
-    border: 1px solid;
-}
-
-.div_intermedio{
+#panel_juego{
     margin: 30px;
     display: grid;
     grid-template-columns: repeat(3,200px);
@@ -20,15 +7,6 @@
     justify-content: center;
 }
 
-.soltable{
+#panel_juego div{
     border: 1px solid;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.arrastrable{
-    width: 200px;
-    height: 150px;
 }
