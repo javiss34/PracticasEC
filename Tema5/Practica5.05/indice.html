@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <form name="formulario">
+        <legend>Colección de discos</legend>
+        <fieldset>
+            <label for="nombre">Nombre:</label>
+            <input type="text" id="nombre" required>
+            <br><br>
+            <label for="caratula">Carátula del disco:</label>
+            <input type="url" id="caratula">
+            <br><br>
+            <label for="grupoOInterprete">Grupo de música o intérprete:</label>
+            <input type="text" id="grupoOInterprete">
+            <br><br>
+            <label for="anioPublicacion">Año de publicación:</label>
+            <input type="text" id="anioPublicacion">
+            <br><br>
+            <label for="genero">Género:</label>
+            <br>
+            <input type="checkbox" id="reggaetón" name="genero">
+            <label for="reggaetón">Reggaetón</label>
+            <input type="checkbox" id="pop" name="genero">
+            <label for="pop">Pop</label>
+            <input type="checkbox" id="flamenco" name="genero">
+            <label for="flamenco">Flamenco</label>
+            <input type="checkbox" id="rap" name="genero">
+            <label for="rap">Rap</label>
+            <br><br>
+            <label for="localizacion">Localización: </label>
+            <input type="text" id="localizacion">
+            <br><br>
+            <label for="prestado">Prestado:</label>
+            <input type="radio" id="si" name="boleano">
+            <label for="si">SI</label>
+            <input type="radio" id="no" name="boleano">
+            <label for="no">NO</label>
+            <br><br>
+            <input type="button" id="guardar" value="Guardar">
+            <input type="button" id="mostrar" value="Mostrar">
+        </fieldset>
+    </form>
+    
+    <script type="module" src="./main.js"></script>
+</body>
+</html>

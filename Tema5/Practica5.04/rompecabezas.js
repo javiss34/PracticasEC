@@ -31,13 +31,12 @@ window.onload = () => {
   });
 
   zonaArrastrable.addEventListener("drop", (evento) => {
-    evento.preventDefault;
-    console.log(evento);
-    if (evento.target.classList.contains("soltable")) {
+    evento.preventDefault();
+    if (evento.target.classList.contains("soltable") && evento.target.tagName === "DIV") {
       evento.target.appendChild(
         document.getElementById(evento.dataTransfer.getData("id"))
       );
-    }
+    };
 
 
     let piezasColocadas = 0;
@@ -61,6 +60,7 @@ window.onload = () => {
       }
 
       let felicitaciones = document.createElement("h1");
+      felicitaciones.setAttribute("class","mensaje")
       if (puzzleCorrecto) {
         felicitaciones.innerHTML = "Felicidades, puzzle completado";
       } else {
@@ -73,13 +73,10 @@ window.onload = () => {
 
   let botonReinicio = document.getElementById("boton_reinicio");
   botonReinicio.addEventListener("click", () => {
-    // 1. Llamamos a desordenarIndices para mover todas las piezas de vuelta a 'piezas'
     desordenarIndices(todasLasImagenes, contenedorImagenes);
-    
-    // 2. Quitamos el mensaje de felicitación si existe
-    const mensajeAnterior = document.getElementById("mensaje-final");
-    if (mensajeAnterior) {
-        mensajeAnterior.remove();
+    const mensaje = document.getElementsByClassName("mensaje");
+    if (mensaje[0]) {
+        mensaje[0].remove();
     }
   });
 }; //FIN ONLOAD
