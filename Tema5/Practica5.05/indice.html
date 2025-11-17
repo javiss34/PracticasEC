@@ -4,14 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="./style.css">
 </head>
 <body>
     <form name="formulario">
         <legend>Colección de discos</legend>
         <fieldset>
             <label for="nombre">Nombre:</label>
-            <input type="text" id="nombre" required>
-            <br><br>
+            <input type="text" id="nombre">
+            <div id="mensajeErrorNombre"></div>
+            <br>
             <label for="caratula">Carátula del disco:</label>
             <input type="url" id="caratula">
             <br><br>
@@ -33,7 +35,7 @@
             <label for="rap">Rap</label>
             <br><br>
             <label for="localizacion">Localización: </label>
-            <input type="text" id="localizacion">
+            <input type="text" id="localizacion" name="localizacion">
             <br><br>
             <label for="prestado">Prestado:</label>
             <input type="radio" id="si" name="boleano">
