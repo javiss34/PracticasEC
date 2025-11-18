@@ -27,28 +27,37 @@
             <br>
             <label for="genero">Género:</label>
             <br>
-            <input type="checkbox" id="reggaetón" name="genero">
-            <label for="reggaetón">Reggaetón</label>
-            <input type="checkbox" id="pop" name="genero">
-            <label for="pop">Pop</label>
-            <input type="checkbox" id="flamenco" name="genero">
-            <label for="flamenco">Flamenco</label>
-            <input type="checkbox" id="rap" name="genero">
-            <label for="rap">Rap</label>
-            <br><br>
+            <fieldset id="cajaGenero">
+                <input type="checkbox" id="reggaetón" name="genero" value="reggaetón">
+                <label for="reggaetón">Reggaetón</label>
+                <input type="checkbox" id="pop" name="genero" value="pop">
+                <label for="pop">Pop</label>
+                <input type="checkbox" id="flamenco" name="genero" value="flamenco">
+                <label for="flamenco">Flamenco</label>
+                <input type="checkbox" id="rap" name="genero" value="rap">
+                <label for="rap">Rap</label>
+                <div id="mensajeErrorSeleccion"></div>
+            </fieldset>
+            <br>
             <label for="localizacion">Localización: </label>
             <input type="text" id="localizacion" name="localizacion">
-            <br><br>
+            <div id="mensajeErrorLocalizacion"></div>
+            <br>
             <label for="prestado">Prestado:</label>
-            <input type="radio" id="si" name="boleano">
+            <input type="radio" id="si" name="boleano" value="Sí">
             <label for="si">SI</label>
-            <input type="radio" id="no" name="boleano">
+            <input type="radio" id="no" name="boleano" value="No">
             <label for="no">NO</label>
             <br><br>
             <input type="button" id="guardar" value="Guardar">
             <input type="button" id="mostrar" value="Mostrar">
+            <br><br>
+            <input type="text" name="buscar" id="buscar">
+            <button id="botonBuscar">Buscar</button>
+            <button id="limpiar">Limpiar</button>
         </fieldset>
     </form>
+    <div id="datos"></div>
     
     <script type="module" src="./main.js"></script>
 </body>

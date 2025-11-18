@@ -61,10 +61,25 @@ export const mostrarMensajeErrorAño = (anio) => {
 }
 
 const comprobarSeleccionGenero = (marcados) => {
-    if(marcados.length>0){//si marcados.length>0 significa que se ha marcado alguna opción.
-        return true;
+    for (let i = 0; i < marcados.length; i++) {
+        if(marcados[i].checked){
+            return true;
+        }  
     }
     return false;
+}
+
+export const mostrarMensajeErrorSeleccion = (marcados) => {
+    let mensaje=document.getElementById("mensajeErrorSeleccion");
+    let cajaGenero = document.getElementById("cajaGenero");//Selecciono la caja para poder ponerla roja
+    let esValido=comprobarSeleccionGenero(marcados);
+    if(!esValido){
+        cajaGenero.classList.add("error");
+        mensaje.textContent="Selecciona alguna opción"
+    }else{
+        cajaGenero.classList.remove("error");
+        mensaje.textContent="";
+    }
 }
 
 const comprobarLocalizacion = (localizacion) => {
@@ -75,3 +90,57 @@ const comprobarLocalizacion = (localizacion) => {
     return false;
 }
 
+export const mostrarMensajeErrorLocalizacion = (localizacion) => {
+    let mensaje = document.getElementById("mensajeErrorLocalizacion");
+    localizacion.addEventListener("input",()=>{
+        let esValido = comprobarLocalizacion(localizacion);
+        if(!esValido){
+            localizacion.classList.add("error");
+            mensaje.textContent="Formato requerido: ES-001AA"
+        }else{
+            localizacion.classList.remove("error")
+            mensaje.textContent="";
+        }
+
+    })
+}
+
+export const validarFormularioEntero = (nombre,interprete,anio,marcados,localizacion) => {
+        return comprobarCaracteres(nombre) && comprobarCaracteres(interprete) && comprobarAño(anio) && comprobarSeleccionGenero(marcados) && comprobarLocalizacion(localizacion);
+}
+
+
+export const recorrerGenerosSeleccionados = (generos) => {
+    let seleccionados=[];
+    for (let i = 0; i < generos.length; i++) {
+        if(generos[i].checked){
+            seleccionados=[...seleccionados,generos[i].value];
+        }
+    }
+    return seleccionados;
+}
+
+export const recorrerPrestado = (opciones) => {
+    let seleccionada;
+    for (let i = 0; i < opciones.length; i++) {
+        if(opciones[i].checked){
+            seleccionada=opciones[i].value;
+        }
+        
+    }
+    return seleccionada;
+}
+
+export const imprimirDiscosJSON = (json) => {
+    return json.map(v => `
+        <div class="disco">
+            <p><strong>Nombre:</strong> ${v.nombre}</p>
+            <p><strong>Interprete:</strong> ${v.interprete}</p>
+            <p><strong>Año:</strong> ${v.anioPubli}</p>
+            <p><strong>Géneros:</strong> ${v.generos.join(", ")}</p>
+            <p><strong>Localización:</strong> ${v.localizacion}</p>
+            <p><strong>Prestado:</strong> ${v.prestado === "Sí" ? "Sí" : "No"}</p>
+            <img src="${v.caratula}" alt="Carátula de ${v.nombre}" width="100">
+        </div>
+    `).join(""); // join convierte el array en un solo string
+}
