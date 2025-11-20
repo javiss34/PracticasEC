@@ -7,15 +7,16 @@
     <link rel="stylesheet" href="./style.css">
 </head>
 <body>
-    <form name="formulario">
+    <form name="formularioPrincipal">
         <legend>Colección de discos</legend>
         <fieldset>
+            <br><br>
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre">
             <div id="mensajeErrorNombre"></div>
             <br>
             <label for="caratula">Carátula del disco:</label>
-            <input type="url" id="caratula">
+            <input type="url" id="caratula" placeholder="URL">
             <br><br>
             <label for="grupoOInterprete">Grupo de música o intérprete:</label>
             <input type="text" id="grupoOInterprete">
@@ -52,12 +53,17 @@
             <input type="button" id="guardar" value="Guardar">
             <input type="button" id="mostrar" value="Mostrar">
             <br><br>
-            <input type="text" name="buscar" id="buscar">
-            <button id="botonBuscar">Buscar</button>
-            <button id="limpiar">Limpiar</button>
         </fieldset>
     </form>
-    <div id="datos"></div>
+
+    <form name="formularioSecundario">
+        <fieldset>
+            <input type="text" id="textoBuscar" placeholder="Búscar🔎">
+            <input type="button" id="buscar" value="Buscar">
+            <input type="button" id="limpiar" value="Limpiar">
+            <div id="datos"></div>
+        </fieldset>
+    </form>
     
     <script type="module" src="./main.js"></script>
 </body>

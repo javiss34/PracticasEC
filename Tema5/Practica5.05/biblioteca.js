@@ -1,4 +1,7 @@
 "use strict";
+/* He decicido ir informando al usuario al mismo tiempo que escribe, por lo que me he visto obligado a usar
+eventos para mostrar los mensajes. Para cada cosa que tengo que validar he hecho una función que devuelve 
+true o false y otra que imprime el mensaje de error */
 
 //Esta función nos sirve para comprobar si un parámetro tiene +5 carácteres o no.
 const comprobarCaracteres = (palabra) => {
@@ -105,6 +108,7 @@ export const mostrarMensajeErrorLocalizacion = (localizacion) => {
     })
 }
 
+//Valido el formulario entero
 export const validarFormularioEntero = (nombre,interprete,anio,marcados,localizacion) => {
         return comprobarCaracteres(nombre) && comprobarCaracteres(interprete) && comprobarAño(anio) && comprobarSeleccionGenero(marcados) && comprobarLocalizacion(localizacion);
 }
@@ -141,6 +145,11 @@ export const imprimirDiscosJSON = (json) => {
             <p><strong>Localización:</strong> ${v.localizacion}</p>
             <p><strong>Prestado:</strong> ${v.prestado === "Sí" ? "Sí" : "No"}</p>
             <img src="${v.caratula}" alt="Carátula de ${v.nombre}" width="100">
+            <h3 class="borrar" id="${v.id}">X</h3>
         </div>
     `).join(""); // join convierte el array en un solo string
+}
+
+export const borrarDisco = (discos,idDisco)=> {
+    return discos.filter((disco) => disco.id !== idDisco);
 }
