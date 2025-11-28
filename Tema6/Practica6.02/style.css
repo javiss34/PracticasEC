@@ -52,8 +52,29 @@ h1 {
     padding: 20px;
     flex: 1; 
     border-radius: 10px;
-    text-align: left;
+    text-align: center;
     overflow-y: auto; 
+    animation: fadeIn 0.6s ease-out forwards;
+}
+
+@keyframes fadeIn {
+    from {
+        /* Comienza invisible */
+        opacity: 0;
+        /* Comienza 20 píxeles por debajo de su posición final */
+        transform: translateY(20px);
+    }
+    to {
+        /* Termina completamente visible */
+        opacity: 1;
+        /* Termina en su posición normal */
+        transform: translateY(0);
+    }
+}
+
+.resumen {
+    padding-left: 200px;
+    padding-right: 200px;
 }
 
 
