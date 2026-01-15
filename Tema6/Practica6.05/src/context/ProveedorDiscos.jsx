@@ -5,7 +5,6 @@ const contextoDiscos = createContext();
 
 const ProveedorDiscos = ({ children }) => {
   const [discos, setDiscos] = useState([]);
-  const [discoAEditar,setDiscoAEditar] = useState(null);
 
   const url = "http://localhost:4003/discos";
 
@@ -58,8 +57,6 @@ const ProveedorDiscos = ({ children }) => {
     insertarDiscos,
     eliminarDisco,
     actualizarDisco,
-    discoAEditar,
-    setDiscoAEditar,
     cargando,
     error
   }
