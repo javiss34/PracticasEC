@@ -1,0 +1,119 @@
+/* 1. La Tarjeta (Contenedor principal) */
+.disco-card {
+  background-color: #fff;       /* Fondo blanco */
+  border: 1px solid #e0e0e0;    /* Borde sutil */
+  border-radius: 10px;          /* Bordes redondeados */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */
+  padding: 16px;
+  width: 280px;                 /* Ancho fijo para que todas sean iguales */
+  display: flex;
+  flex-direction: column;       /* Elementos uno debajo de otro */
+  gap: 12px;                    /* Espacio entre las secciones interna */
+  transition: transform 0.2s;   /* Animación suave al pasar el ratón */
+}
+
+/* Efecto al pasar el ratón por encima de la tarjeta */
+.disco-card:hover {
+  transform: translateY(-5px);  /* La tarjeta "flota" un poco hacia arriba */
+  box-shadow: 0 8px 12px rgba(0, 0, 0, 0.15);
+}
+
+/* 2. Sección de la Imagen */
+.caratula {
+  width: 100%;
+  height: 200px;                /* Altura fija para evitar desalineación */
+  overflow: hidden;             /* Si la imagen es muy grande, se corta */
+  border-radius: 6px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f9f9f9;
+}
+
+.caratula img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;            /* La imagen rellena el hueco sin deformarse */
+  display: block;
+}
+
+/* 3. Sección de Información */
+.disco_info {
+  flex-grow: 1;                 /* Empuja los botones hacia abajo si hay poco texto */
+  text-align: left;
+}
+
+.disco_info h3 {
+  margin: 0 0 10px 0;
+  font-size: 1.2rem;
+  color: #333;
+  border-bottom: 2px solid #f0f0f0;
+  padding-bottom: 5px;
+}
+
+.disco_info p {
+  margin: 5px 0;
+  font-size: 0.9rem;
+  color: #555;
+  line-height: 1.4;
+}
+
+.disco_info strong {
+  color: #000;
+}
+
+/* 4. Sección de Acciones (Botones) */
+.disco_acciones {
+  display: flex;
+  justify-content: flex-end;    /* Alinea el icono a la derecha */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+}
+
+/* 5. El icono de borrar */
+.imagen_borrar {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;              /* Manita al pasar el ratón */
+  opacity: 0.7;
+  transition: all 0.2s ease;
+}
+
+.imagen_borrar:hover {
+  opacity: 1;
+  transform: scale(1.2);        /* Crece un poco al pasar el ratón */
+  filter: drop-shadow(0 0 2px red); /* Brillo rojo sutil */
+}
+
+/* ... resto de tu CSS anterior ... */
+
+.disco_acciones {
+  display: flex;
+  justify-content: flex-end; /* Alineados a la derecha */
+  gap: 15px;                 /* Separación entre el lápiz y la basura */
+  border-top: 1px solid #f0f0f0;
+  padding-top: 10px;
+  margin-top: auto;          /* Empuja los botones al final de la tarjeta */
+}
+
+/* Estilo base para ambos iconos */
+.icono-accion {
+  width: 24px;
+  height: 24px;
+  cursor: pointer;
+  transition: transform 0.2s ease, filter 0.2s;
+}
+
+.icono-accion:hover {
+  transform: scale(1.2);
+}
+
+/* Estilo específico para Editar (Lápiz) */
+.icono-editar:hover {
+  filter: drop-shadow(0 0 2px blue); /* Brillo azul al pasar el ratón */
+}
+
+/* Estilo específico para Borrar (Papelera) */
+.icono-borrar:hover {
+  filter: drop-shadow(0 0 2px red); /* Brillo rojo al pasar el ratón */
+}

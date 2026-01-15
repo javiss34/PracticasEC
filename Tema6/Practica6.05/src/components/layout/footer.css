@@ -1,0 +1,21 @@
+/* Footer.css */
+
+.footer-container {
+    background-color: #f4f4f4; /* Gris claro */
+    color: #666;               /* Texto gris oscuro */
+    padding: 10px 0;          /* Espaciado interior */
+    text-align: center;         /* Centrar el texto */
+    border-top: 1px solid #ddd; /* Borde superior sutil */
+    
+    /* PROPIEDADES PARA FIJAR LA POSICIÓN */
+    position: fixed;           /* Fija el elemento en relación a la ventana */
+    bottom: 0;                 /* Lo coloca justo en la parte inferior */
+    width: 100%;               /* Asegura que ocupe todo el ancho */
+    z-index: 999;  
+    left: 0;            /* Asegura que esté por encima del contenido */
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 0.9em;
+}

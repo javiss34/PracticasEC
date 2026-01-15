@@ -1,0 +1,16 @@
+.lista_discos {
+  display: flex;
+  flex-wrap: wrap;       /* Si no caben, bajan a la siguiente fila */
+  gap: 20px;             /* Espacio entre tarjetas */
+  justify-content: center; /* Centrado en la pantalla */
+  padding: 20px;
+  width: 100%;
+  box-sizing: border-box; /* Para que el padding no desborde el ancho */
+}
+
+/* Opcional: Estilo para el mensaje de "No hay discos" */
+.lista_discos h3 {
+  color: #666;
+  font-family: sans-serif;
+  margin-top: 50px;
+}

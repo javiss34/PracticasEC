@@ -6,8 +6,7 @@ const traerDatos = (url) => {
       return respuesta.json();
     })
     .then((datos) => {
-      console.log(datos.results)
-      return datos.results;
+      return datos.results ? datos.results : datos;
     })
     .catch((error) => {
       return `${error.message}`;

@@ -1,0 +1,56 @@
+/* Estilos para el componente Header */
+/* Estilos para el componente Header */
+.header-container {
+    background-color: #333; 
+    color: #fff;          
+    padding: 15px 20px;   
+    text-align: center;    
+    border-bottom: 3px solid #00BCD4; 
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); 
+    
+    /* PROPIEDADES AÑADIDAS PARA FIJAR LA POSICIÓN */
+    position: fixed; /* Fija el elemento en relación a la ventana del navegador */
+    top: 0;  
+    left: 0;        /* Lo coloca justo en la parte superior */
+    width: 100%;     /* Asegura que ocupe todo el ancho */
+    z-index: 1000;   /* Asegura que esté por encima de cualquier otro contenido */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* ... el resto de tu CSS ... */
+
+.header-container {
+    background-color: #333; /* Gris oscuro */
+    color: #fff;          /* Texto blanco */
+    padding: 15px 20px;   /* Espaciado interior */
+    text-align: center;    /* Centrar el texto */
+    border-bottom: 3px solid #00BCD4; /* Borde inferior turquesa */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Sombra sutil */
+}
+
+.header-title {
+    margin: 0;
+    font-size: 1.8em;
+}
+
+/* Estilos para el componente Footer */
+.footer-container {
+    background-color: #f4f4f4; /* Gris claro */
+    color: #666;               /* Texto gris oscuro */
+    padding: 10px 0;          /* Espaciado interior */
+    text-align: center;         /* Centrar el texto */
+    border-top: 1px solid #ddd; /* Borde superior sutil */
+    position: fixed;           /* Fijar al final de la ventana */
+    bottom: 0;
+    width: 100%;
+    /* Asegúrate de que el contenido no quede oculto bajo el footer */
+}
+
+.footer-text {
+    margin: 0;
+    font-size: 0.9em;
+}

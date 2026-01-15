@@ -1,16 +1,12 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
-import Peliculas from './components/Peliculas.jsx'
+import Peliculas from "./components/Peliculas";
+import ContextoProvider from "./context/Contexto";
 
 function App() {
-
   return (
-    <>
-      <Peliculas/>
-    </>
-  )
+    <ContextoProvider>
+      <Peliculas />
+    </ContextoProvider>
+  );
 }
 
-export default App
+export default App;

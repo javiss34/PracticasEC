@@ -1,0 +1,30 @@
+{
+  "discos": [
+    {
+      "id": "78c1776f-b581-4176-a112-b9a0ffa30c09",
+      "nombre": "Un alumno más",
+      "caratula": "https://m.media-amazon.com/images/I/81-MqAb2U2L.jpg",
+      "grupo": "Melendi",
+      "anioPubli": "2010",
+      "regueton": false,
+      "pop": true,
+      "flamenco": false,
+      "rap": false,
+      "localizacion": "ES-001AS",
+      "prestado": "no"
+    },
+    {
+      "id": "a65655d4-8878-41e0-af3c-c046bd66ee0f",
+      "nombre": "Otra noche sin dormir",
+      "caratula": "https://images.genius.com/9b4acd648c12aa172b1b4ec9f8eaf4da.1000x1000x1.png",
+      "grupo": "Moraa",
+      "anioPubli": "2024",
+      "regueton": true,
+      "pop": false,
+      "flamenco": false,
+      "rap": false,
+      "localizacion": "ES-003AB",
+      "prestado": "no"
+    }
+  ]
+}

@@ -1,0 +1,27 @@
+.contenedor_lista {
+  display: flex;
+  gap: 20px;
+  padding: 20px;
+  background-color: #f9f9f9;
+}
+
+.lista_peliculas {
+  width: 30%;
+  border-right: 2px solid #ccc;
+  padding-right: 20px;
+}
+
+.lista_peliculas h2 {
+  cursor: pointer;
+  padding: 10px;
+  margin: 8px 0;
+  font-size: 18px;
+  font-weight: 600;
+  color: #111;
+  border-radius: 4px;
+  transition: background 0.2s;
+}
+
+.lista_peliculas h2:hover {
+  background-color: #e2e2e2;
+}

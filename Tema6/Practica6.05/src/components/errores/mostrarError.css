@@ -1,0 +1,56 @@
+/* 1. Cuando no hay errores, ocultamos el div para que no ocupe espacio */
+.sinErrores {
+  display: none;
+}
+
+/* 2. El contenedor de la alerta */
+.errores {
+  background-color: #fef2f2;  /* Rojo muy pálido, no agresivo */
+  border: 1px solid #fecaca;  /* Borde sutil */
+  border-left: 5px solid #ef4444; /* Borde izquierdo grueso (toque moderno) */
+  color: #991b1b;             /* Texto rojo oscuro para buen contraste */
+  
+  padding: 1rem;              /* Espacio interno */
+  margin: 1rem 0;             /* Separación con otros elementos */
+  border-radius: 6px;         /* Bordes ligeramente redondeados */
+  
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05); /* Sombra muy suave */
+  font-family: sans-serif;
+  
+  /* Pequeña animación de entrada */
+  animation: entradaSuave 0.3s ease-out;
+}
+
+/* 3. Los párrafos de texto dentro de la alerta */
+.errores p {
+  margin: 5px 0;      /* Separación entre mensajes de error */
+  font-size: 0.95rem;
+  font-weight: 500;
+  display: flex;      /* Para alinear si quisieras poner iconos */
+  align-items: center;
+}
+
+/* Truco CSS: Añadir un icono de advertencia automáticamente antes de cada error */
+.errores p::before {
+  content: "⚠️";
+  margin-right: 8px;
+  font-size: 1rem;
+}
+
+/* 4. Animación para que no aparezca de golpe */
+@keyframes entradaSuave {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error{
+    border: 1px solid rgb(209, 42, 42);
+    border-radius: 5px;
+    background-color: #472c2c;
+}
