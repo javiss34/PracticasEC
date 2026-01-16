@@ -11,7 +11,7 @@ const Rutas = () => {
             <Route path='/' element={<Inicio/>}/>
             <Route path='/insertar-discos' element={<FormularioInsertarDiscos/>}/>
             <Route path='/lista-discos' element={<MostrarDiscos/>}/>
-            <Route path='/editar/:id' element={<FormularioInsertarDiscos/>}/>
+            <Route path='/lista-discos/editar/:id' element={<FormularioInsertarDiscos/>}/>
         </Routes>
 
     </>

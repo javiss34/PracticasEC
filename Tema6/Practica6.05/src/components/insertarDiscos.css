@@ -1,0 +1,129 @@
+/* InsertarDiscos.css */
+
+/* 1. Contenedor Principal */
+#formulario_principal {
+    max-width: 600px;
+    margin: 100px auto 50px; /* Margen superior amplio para salvar el menú fijo */
+    padding: 30px;
+    background-color: #d8d8d8;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* 2. Título */
+#formulario_principal h2 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    border-bottom: 2px solid #00BCD4;
+    display: inline-block;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+/* 3. Estilos de Etiquetas (Labels) */
+form label {
+    display: block; /* Hace que el label ocupe su propia línea */
+    font-weight: 600;
+    margin-bottom: 8px;
+    color: #555;
+    margin-top: 15px;
+}
+
+/* 4. Inputs de Texto */
+form input[type="text"] {
+    width: 100%; /* Ocupa todo el ancho disponible */
+    padding: 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    box-sizing: border-box; /* Evita que el padding rompa el ancho */
+    font-size: 1rem;
+    transition: border-color 0.3s;
+}
+
+form input[type="text"]:focus {
+    outline: none;
+    border-color: #00BCD4;
+    box-shadow: 0 0 5px rgba(0, 188, 212, 0.2);
+}
+
+/* 5. Clases de Error (Lógica de validación) */
+/* Input de texto con error */
+form input.error {
+    border: 2px solid #e74c3c !important;
+    background-color: #fdf2f2;
+}
+
+/* Div contenedor con error (Géneros) */
+div.error {
+    border: 2px solid #e74c3c;
+    background-color: #fdf2f2;
+    padding: 15px;
+    border-radius: 4px;
+}
+
+/* 6. Contenedores de Checkboxes y Radio (Géneros y Prestado) */
+.contenedor_generos, 
+.contenedor_prestado {
+    border: 1px solid #eee;
+    padding: 15px;
+    border-radius: 4px;
+    background-color: #fafafa;
+    margin-top: 15px;
+}
+
+/* Si el div tiene clase error, mantenemos el layout pero cambiamos bordes (regla de arriba) */
+
+/* Estilo para el "legend" (aunque esté en un div) */
+legend {
+    font-weight: bold;
+    color: #333;
+    margin-bottom: 10px;
+    display: block;
+}
+
+/* Alineación de los checkboxes/radios en fila */
+.contenedor_generos label,
+.contenedor_prestado label {
+    display: inline-flex; /* Para ponerlos uno al lado del otro */
+    align-items: center;
+    margin-right: 20px;
+    margin-top: 5px;
+    margin-bottom: 5px;
+    font-weight: normal;
+    cursor: pointer;
+}
+
+.contenedor_generos input,
+.contenedor_prestado input {
+    margin-right: 8px;
+    transform: scale(1.2); /* Hacerlos un pelín más grandes */
+    accent-color: #00BCD4; /* Color del check moderno */
+}
+
+/* 7. Botón de Enviar */
+input[type="button"] {
+    display: block;
+    width: 100%;
+    background-color: #00BCD4;
+    color: white;
+    padding: 15px;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    margin-top: 30px;
+    transition: background-color 0.3s ease, transform 0.1s;
+}
+
+input[type="button"]:hover {
+    background-color: #008ba3;
+}
+
+input[type="button"]:active {
+    transform: scale(0.98);
+}

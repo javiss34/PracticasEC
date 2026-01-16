@@ -3,9 +3,11 @@ import { contextoDiscos } from "../context/ProveedorDiscos";
 import ConfirmacionBorrar from "../components/ConfirmacionBorrar.jsx";
 import "./disco.css";
 import { useNavigate } from "react-router-dom";
+import useDiscos from "../hooks/useDiscos.js";
 
 const Disco = ({ disco }) => {
-  const { eliminarDisco, setDiscoAEditar } = useContext(contextoDiscos);
+  const { eliminarDisco } = useDiscos();
+  //Este estado sirve para saber cuando hay que mostrar el componente confirmación.
   const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
   const navegar = useNavigate();
 
@@ -26,16 +28,11 @@ const Disco = ({ disco }) => {
     return generos.join(", ");
   };
 
+  //se llamara cuando el usuario confirme que si quiere borrar.
   const borraDisco = () => {
     eliminarDisco(disco.id);
     setMostrarConfirmacion(false);
   };
-
-  const manejarActualizacionDisco = () => {
-    setDiscoAEditar(disco);
-    navegar(`/editar/${disco.id}`);
-
-  }
 
   return (
     <>
@@ -71,7 +68,7 @@ const Disco = ({ disco }) => {
             type="button"
             value="Editar"
             onClick={() => {
-              manejarActualizacionDisco()
+              navegar(`/lista-discos/editar/${disco.id}`);
             }}
           />
           <img

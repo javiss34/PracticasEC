@@ -1,31 +1,22 @@
-/* Menu.css */
-
 /* 1. Contenedor de la navegación (<nav>) */
 nav {
     display: flex; 
-    justify-content: space-around; /* Distribuye los enlaces de izquierda a derecha */
-    background-color: #f8f8f8; 
+    justify-content: space-around; 
+    background-color: #a3a3a3; 
     padding: 10px 20px;
-    border-bottom: 1px solid #ddd;
+    border-bottom: 10px ;
     box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-    
-    /* PROPIEDADES CLAVE PARA FIJAR EL MENÚ */
-    position: fixed; /* Lo fija en relación a la ventana */
-    width: 100%;     /* Asegura que ocupe todo el ancho */
-    
-    /* CLAVADO JUSTO DEBAJO DEL HEADER */
-    /* Si tu Header fijo mide 60px de alto, el menú debe empezar en top: 60px */
+    position: fixed; 
+    width: 100%;     
     top: 60px; 
     left: 0;      
-    
-    /* DEBE ESTAR POR DEBAJO DEL HEADER (z-index del Header debería ser ~1000) */
     z-index: 950;    
 }
 
 /* 2. Estilo base de los elementos de menú (Link) */
 .menu-elemento {
     text-decoration: none; 
-    color: #333; 
+    color: #ffffff; 
     padding: 8px 15px;
     border-radius: 4px;
     font-weight: 600; 

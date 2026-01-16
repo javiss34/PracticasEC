@@ -1,6 +1,6 @@
 /* 1. La Tarjeta (Contenedor principal) */
 .disco-card {
-  background-color: #fff;       /* Fondo blanco */
+  background-color: #FAF0E6;       /* Fondo blanco */
   border: 1px solid #e0e0e0;    /* Borde sutil */
   border-radius: 10px;          /* Bordes redondeados */
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Sombra suave */

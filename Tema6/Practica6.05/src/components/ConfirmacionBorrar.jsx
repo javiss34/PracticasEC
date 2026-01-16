@@ -2,6 +2,7 @@ import React from "react";
 import './confirmacionBorrar.css';
 
 const ConfirmacionBorrar = ({mostrar,mensaje,cancelar,confirmar}) => {
+  //mostrar será un estado que si es false no devuelve nada y si es true devuelve el mensaje de confirmación.
     if(!mostrar){
         return null;
     }

@@ -6,9 +6,9 @@ const Menu = () => {
   return (
     <>
         <nav>
-            <Link className='menu-elemento' to='/'>Inicio</Link>
-            <Link className='menu-elemento' to='/insertar-discos'>Insertar Discos</Link>
-            <Link className='menu-elemeto' to='/lista-discos'>Lista Discos</Link>  
+            <Link className='menu-elemento' to='/'>INICIO</Link>
+            <Link className='menu-elemento' to='/insertar-discos'>INSERTAR DISCOS</Link>
+            <Link className='menu-elemento' to='/lista-discos'>LISTA DISCOS</Link>  
         </nav>
     </>
   )

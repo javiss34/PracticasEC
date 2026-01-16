@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react";
+import {useEffect, useState } from "react";
 import {
   validarCaracteres,
   validarAnio,
@@ -6,9 +6,12 @@ import {
 } from "../biblioteca/validaciones";
 import MostrarError from "./errores/MostrarError.jsx";
 import "./errores/mostrarError.css";
-import { contextoDiscos } from "../context/ProveedorDiscos.jsx";
 import { useNavigate, useParams } from "react-router-dom";
+import './insertarDiscos.css';
+import useDiscos from "../hooks/useDiscos.js";
 
+/* He decidido que en este componente voy a controlar el formulario tanto
+como para insertar discos como para actualizarlos con el mismo formulario */
 const InsertarDiscos = () => {
   const valoresIniciales = {
     nombre: "",
@@ -23,6 +26,7 @@ const InsertarDiscos = () => {
     prestado: "no",
   };
 
+  //Estos estados solo van a ser usados en este componente por lo cual los declaro aquí y no en el contexto
   const [disco, setDisco] = useState(valoresIniciales);
   //Objeto de errores. Así le podemos indicar al usuario que input es erroneo
   const [objetoErrores, setObjetoErrores] = useState({});
@@ -30,34 +34,37 @@ const InsertarDiscos = () => {
   const [listaErrores, setListaErrores] = useState([]);
 
   const { insertarDiscos, actualizarDisco, discos } =
-    useContext(contextoDiscos);
+    useDiscos();
 
   const { id } = useParams();
   const navegar = useNavigate();
 
   useEffect(() => {
+    //Si se pasa una id como parámetro y pertenece a un disco se establece ese disco
     if (id) {
       const discoEncontrado = discos.find((d) => d.id === id);
       if (discoEncontrado) {
         setDisco(discoEncontrado);
-      } else {
-        console.log("Disco no encontrado");
+      }else{
+        navegar("/lista-discos");//De esta forma si en el buscador hay un id que no pertenece a ningún disco, se redirige a lista-disco
       }
+      //Si no quiere decir que se está introduciendo un disco
     } else {
       setDisco(valoresIniciales);
     }
-  }, [id, discos]);
+  }, [id, discos]);//Cuando el id dinámico o el estado discos cambian(cuando llegan los datos del servidor) se ejecuta el código del useEffect
 
   const actualizarDato = (e) => {
+    //De esta forma obtenemos el valor de cada input sea del tipo que sea
     const { name, value, type, checked } = e.target;
     const valorFinal = type === "checkbox" ? checked : value;
 
-    //Limpiar errores visuales del input concreto
+    /* He tomado la decisión de diseño de que cada vez que el usuario escriba,o 
+    haga clic en checkbox/radio el error visual del input en rojo desaparezca */
     //Hacemos una copia del objeto de errores
     const nuevosErroresObj = { ...objetoErrores };
-    //Dejamos el objeto vacío
+    //Dejamos el input del objeto actual vacío
     nuevosErroresObj[name] = "";
-    //Establecemos este nuevo objeto como el objeto de errores
     setObjetoErrores(nuevosErroresObj);
 
     setDisco({ ...disco, [name]: valorFinal });
@@ -92,7 +99,10 @@ const InsertarDiscos = () => {
 
     //Guardamos en una constante el resultado de validarDato. Si hay algún error es "mensaje de error" y sino es ""
     const errorNombre = validarDato("nombre", disco.nombre);
-    //Si hay algún mensaje de error se guarda en el objeto con el name nombre el mensaje de error
+
+    /* De esta forma formamos un objeto que tiene como clave el nombre del campo que
+    falla y como valor el mensaje de error, de esta forma es mucho más fácil marcar
+    el campo que falla en el formulario*/
     if (errorNombre) {
       objetoErroresActuales.nombre = errorNombre;
       listaErroresActuales = [...listaErroresActuales, errorNombre];
@@ -131,8 +141,11 @@ const InsertarDiscos = () => {
 
     if (formularioValido) {
       try {
+        //Si hay id actualizamos
         if (id) {
           const respuesta = await actualizarDisco(id, disco);
+          navegar("/lista-discos");//Tras actualizar el disco, te redirecciona a lista-discos
+        //Si no hay id, se crea uno nuevo y se añade a discos
         } else {
           const nuevoDisco = {
             ...disco,
@@ -140,7 +153,6 @@ const InsertarDiscos = () => {
           };
           const respuesta = await insertarDiscos(nuevoDisco);
         }
-        navegar("/lista-discos");
       } catch (error) {
         return error;
       }
@@ -281,9 +293,8 @@ const InsertarDiscos = () => {
             />
             No
           </label>
-
-          <input type="button" value={id ? "Actualizar" : "Guardar"} onClick={validarFormulario} />
         </div>
+        <input type="button" value={id ? "Actualizar" : "Guardar"} onClick={validarFormulario} />
       </form>
       <div>
         <MostrarError errores={listaErrores} />

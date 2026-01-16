@@ -1,16 +1,67 @@
-.lista_discos {
-  display: flex;
-  flex-wrap: wrap;       /* Si no caben, bajan a la siguiente fila */
-  gap: 20px;             /* Espacio entre tarjetas */
-  justify-content: center; /* Centrado en la pantalla */
-  padding: 20px;
-  width: 100%;
-  box-sizing: border-box; /* Para que el padding no desborde el ancho */
+/* listarDiscos.css */
+
+.contenedor-pagina-discos {
+    padding-top: 140px; 
+    padding-bottom: 60px;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
 
-/* Opcional: Estilo para el mensaje de "No hay discos" */
-.lista_discos h3 {
-  color: #666;
-  font-family: sans-serif;
-  margin-top: 50px;
+/* 2. Estilo del Buscador */
+.filtrar_discos {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 30px;
+    padding: 0 20px;
+}
+
+.filtrar_discos input {
+    width: 100%;
+    max-width: 500px; /* Que no sea gigante en pantallas grandes */
+    padding: 12px 20px;
+    font-size: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 50px; /* Borde redondeado tipo "cápsula" */
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+}
+
+/* Efecto al hacer click en el buscador */
+.filtrar_discos input:focus {
+    border-color: #00BCD4; /* Tu color corporativo */
+    box-shadow: 0 4px 10px rgba(0, 188, 212, 0.2);
+    transform: translateY(-2px);
+}
+
+/* 3. Estilo de la Lista (Tu código mejorado) */
+.lista_discos {
+  display: flex;
+  flex-wrap: wrap;       
+  gap: 20px;            
+  justify-content: center; 
+  padding: 0 20px; /* Padding lateral */
+  width: 100%;
+  box-sizing: border-box; 
+  margin-top: 80px;
+  margin-bottom: 40px;
+}
+
+/* 4. Mensaje de "No encontrado" */
+.sin-resultados {
+    text-align: center;
+    margin-top: 50px;
+    color: #777;
+    width: 100%; /* Para que ocupe todo el ancho y se centre bien */
+}
+
+.sin-resultados h3 {
+    font-size: 1.5rem;
+    margin-bottom: 10px;
+    font-weight: 600;
+}
+
+.sin-resultados p {
+    font-size: 1rem;
+    color: #999;
 }
