@@ -1,10 +1,10 @@
-import React, { useContext, useState } from "react";
-import { contextoDiscos } from "../context/ProveedorDiscos.jsx";
+import React, { useState } from "react";
 import Disco from "./Disco.jsx";
 import "./listarDiscos.css";
+import useDiscos from "../hooks/useDiscos.js";
 
 const ListarDiscos = () => {
-  const { discos } = useContext(contextoDiscos);
+  const { discos } = useDiscos();
   const [busqueda, setBusqueda] = useState("");
 
   //De esta forma podemos filtrar tanto por nombre de disco como por nombre de artista/grupo.
@@ -14,19 +14,26 @@ const ListarDiscos = () => {
       disco.grupo.toLowerCase().includes(busqueda.toLowerCase())
   );
 
+  const limpiarFiltro = () => {
+    setBusqueda("");
+    return discos;
+  }
+
   return (
     <div className="contenedor-paginas-discos">
       {discos.length > 0 && (
-        <div className="filtrar_discos">
-          <label htmlFor="filtro"></label>
-          <input
-            type="text"
-            id="filtro"
-            placeholder="Busque aqui"
-            value={busqueda}
-            onChange={(e) => setBusqueda(e.target.value)}
-          />
-        </div>
+        <>
+          <div className="filtrar_discos">
+            <input
+              type="text"
+              id="filtro"
+              placeholder="Busque aqui"
+              value={busqueda}
+              onChange={(e) => setBusqueda(e.target.value)}
+            />
+            <input type="button" id="limpiar" value="limpiar" onClick={()=>limpiarFiltro()} />
+          </div>
+        </>
       )}
       <div className="lista_discos">
         {discosFiltrados.length > 0 ? (

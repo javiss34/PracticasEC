@@ -25,6 +25,7 @@
     outline: none;
     transition: all 0.3s ease;
     box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+    margin-top: 100px;
 }
 
 /* Efecto al hacer click en el buscador */
@@ -43,7 +44,6 @@
   padding: 0 20px; /* Padding lateral */
   width: 100%;
   box-sizing: border-box; 
-  margin-top: 80px;
   margin-bottom: 40px;
 }
 
@@ -64,4 +64,12 @@
 .sin-resultados p {
     font-size: 1rem;
     color: #999;
+}
+.filtrar_discos input[type="button"] {
+    width: auto;
+    margin-left: 10px; 
+    cursor: pointer;
+    background-color: #00BCD4; 
+    color: white; 
+    border: none; 
 }
