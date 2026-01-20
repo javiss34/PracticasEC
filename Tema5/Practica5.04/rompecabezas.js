@@ -1,82 +1,76 @@
 "use strict";
-import { desordenarIndices } from "./biblioteca.js";
+import { desordenarIndices, mostrarMensaje } from "./biblioteca.js";
 
 window.onload = () => {
-  let contenedorImagenes = document.getElementById("piezas");
-  let imagenes = contenedorImagenes.children;
-  let panelJuego = document.getElementById("panel_juego");
-  let divsPanelJuego = panelJuego.children;
-  let todasLasImagenes = document.querySelectorAll("div img");
-  console.log(todasLasImagenes)
+  const contenedorImagenes = document.getElementById("piezas");
+  const panelJuego = document.getElementById("panel_juego");
+  const zonaArrastrable = document.getElementById("zona_arrastrable");
+  const botonReinicio = document.getElementById("boton_reinicio");
 
-  //Desordenar imagenes
+  const imagenes = contenedorImagenes.children;
+  const divsPanelJuego = panelJuego.children;
+
+  // Desordenar imágenes al iniciar
   desordenarIndices(imagenes, contenedorImagenes);
 
-  //Ponemos el draggable a cada elemento arrastrable
-  let zonaArrastrable = document.getElementById("zona_arrastrable");
-  let elementosArrastrables = document.getElementsByClassName("arrastrable");
-  for (let i = 0; i < elementosArrastrables.length; i++) {
-    elementosArrastrables[i].setAttribute("draggable", true);
-  }
-
-  //Establecemos id y nombre al comenzar a arrastrar
-  zonaArrastrable.addEventListener("dragstart", (evento) => {
-    evento.dataTransfer.setData("id", evento.target.id);
-    evento.dataTransfer.setData("etiqueta", evento.target.localName);
+  // Delegación de eventos
+  zonaArrastrable.addEventListener("dragstart", (e) => {
+    if (e.target.classList.contains("arrastrable")) {
+      e.dataTransfer.setData("id", e.target.id);
+    }
   });
 
-  //Neecesitamos hacer el preventDefault para que al deslizar nos deje soltar
-  zonaArrastrable.addEventListener("dragover", (evento) => {
-    evento.preventDefault();
+  zonaArrastrable.addEventListener("dragover", (e) => {
+    if (e.target.classList.contains("soltable")) {
+      e.preventDefault();
+    }
   });
 
-  zonaArrastrable.addEventListener("drop", (evento) => {
-    evento.preventDefault();
-    if (evento.target.classList.contains("soltable") && evento.target.tagName === "DIV") {
-      evento.target.appendChild(
-        document.getElementById(evento.dataTransfer.getData("id"))
-      );
-    };
+  zonaArrastrable.addEventListener("drop", (e) => {
+    e.preventDefault();
 
+    if (
+      e.target.classList.contains("soltable") &&
+      e.target.children.length === 0
+    ) {
+      const id = e.dataTransfer.getData("id");
+      e.target.appendChild(document.getElementById(id));
+    }
 
+    comprobarResultado();
+  });
+
+  const comprobarResultado = () => {
     let piezasColocadas = 0;
-    for (let i = 0; i < divsPanelJuego.length; i++) {
-      if (divsPanelJuego[i].children.length > 0) {
-        piezasColocadas++;
+
+    for (let div of divsPanelJuego) {
+      if (div.children.length > 0) piezasColocadas++;
+    }
+
+    if (piezasColocadas !== 9) return;
+
+    let puzzleCorrecto = true;
+
+    for (let div of divsPanelJuego) {
+      const numeroDiv = div.id.replace("soltable", "");
+      const numeroImg = div.children[0].id.replace("arrastrable", "");
+
+      if (numeroDiv !== numeroImg) {
+        puzzleCorrecto = false;
+        break;
       }
     }
 
-    if (piezasColocadas === 9) {
-      let puzzleCorrecto = true;
+    mostrarMensaje(puzzleCorrecto);
+  };
 
-      for (let i = 0; i < divsPanelJuego.length; i++) {
-        let idDiv = divsPanelJuego[i].id;
-        let idImg = divsPanelJuego[i].children[0].id;
-
-        if (idDiv !== idImg) {
-          puzzleCorrecto = false;
-          break;
-        }
-      }
-
-      let felicitaciones = document.createElement("h1");
-      felicitaciones.setAttribute("class","mensaje")
-      if (puzzleCorrecto) {
-        felicitaciones.innerHTML = "Felicidades, puzzle completado";
-      } else {
-        felicitaciones.innerHTML = "Lo siento, puzzle mal hecho";
-      }
-
-      document.body.appendChild(felicitaciones);
-    }
-  });
-
-  let botonReinicio = document.getElementById("boton_reinicio");
   botonReinicio.addEventListener("click", () => {
-    desordenarIndices(todasLasImagenes, contenedorImagenes);
-    const mensaje = document.getElementsByClassName("mensaje");
-    if (mensaje[0]) {
-        mensaje[0].remove();
-    }
+    const mensaje = document.querySelector(".mensaje");
+    if (mensaje) mensaje.remove();
+
+    const imagenesPanel = panelJuego.querySelectorAll("img");
+    imagenesPanel.forEach((img) => contenedorImagenes.appendChild(img));
+
+    desordenarIndices(contenedorImagenes.children, contenedorImagenes);
   });
-}; //FIN ONLOAD
+};

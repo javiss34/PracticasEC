@@ -1,0 +1,70 @@
+.main-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 70px;
+  background-color: #242424;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-bottom: 1px solid #646cff33;
+  z-index: 1000;
+  padding: 0 2rem;
+  box-sizing: border-box;
+}
+
+.header-content {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.header-content h1 {
+  font-size: 1.5rem;
+  margin: 0;
+  background: linear-gradient(45deg, #646cff, #61dafb);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.header-auth {
+  position: absolute;
+  right: 2rem;
+}
+
+.login-btn {
+  background-color: rgba(255, 255, 255, 0.05); 
+  border: 1px solid #646cff55;
+  color: #fff;
+  padding: 4px 12px 4px 4px; 
+  border-radius: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+}
+
+.login-btn:hover {
+  background-color: #646cff11;
+  border-color: #646cff;
+  transform: translateY(-1px);
+}
+
+.user-image-container {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-avatar-img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Asegura que la imagen no se deforme */
+}

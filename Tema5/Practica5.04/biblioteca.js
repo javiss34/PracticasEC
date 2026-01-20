@@ -1,29 +1,28 @@
 "use strict";
 
-export const desordenarIndices = (array,contenedorPadre) => {
-  let todosLosIndices = [];
+export const desordenarIndices = (array, contenedorPadre) => {
+  const indicesUsados = [];
+
   for (let i = 0; i < array.length; i++) {
-    let numeroAleatorio;
+    let indice;
     do {
-      numeroAleatorio = Math.floor(Math.random() * array.length);
-    } while (todosLosIndices.includes(numeroAleatorio));
-    todosLosIndices = [...todosLosIndices, numeroAleatorio];
-    contenedorPadre.appendChild(array[numeroAleatorio]);
+      indice = Math.floor(Math.random() * array.length);
+    } while (indicesUsados.includes(indice));
+
+    indicesUsados.push(indice);
+    contenedorPadre.appendChild(array[indice]);
   }
-}
+};
 
-export const comprobarPuzle = (panelJuego,divs,imagenOriginal) => {
-    let piezasColocadas = 0;
-    for (let i = 0; i < divs.length; i++) {
-        if(divs[i].children.length>0){
-            piezasColocadas++;
-        }
-    }
-    if(piezasColocadas===imagenOriginal.length){
-        for (let i = 0; i < array.length; i++) {
-            
-        }
-    }
+export const mostrarMensaje = (correcto) => {
+  let mensaje = document.querySelector(".mensaje");
+  if (mensaje) mensaje.remove();
 
-}
+  mensaje = document.createElement("h1");
+  mensaje.className = "mensaje";
+  mensaje.textContent = correcto
+    ? "🎉 Felicidades, puzzle completado"
+    : "❌ Lo siento, puzzle mal hecho";
 
+  document.body.appendChild(mensaje);
+};

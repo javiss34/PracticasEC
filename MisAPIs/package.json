@@ -1,0 +1,13 @@
+{
+  "name": "mis-apis-locales",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "starwars": "json-server --watch StarWars.json --port 4000",
+    "peliculas": "json-server --watch peliculas.json --port 4001",
+    "discentes": "json-server --watch discentes.json --port 4002"
+  },
+  "dependencies": {
+    "json-server": "^1.0.0-beta.3"
+  }
+}
