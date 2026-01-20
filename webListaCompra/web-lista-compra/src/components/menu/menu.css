@@ -1,0 +1,37 @@
+.sub-menu {
+  position: fixed;
+  top: 71px; /* Justo debajo de los 70px del Header */
+  left: 0;
+  width: 100%;
+  height: 50px;
+  background-color: #2a2a2a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 30px; /* Espacio entre los links */
+  z-index: 999;
+  border-bottom: 1px solid #646cff22;
+}
+
+.menu-elemento {
+  text-decoration: none; /* Quita el subrayado azul por defecto */
+  color: #ccc;
+  font-weight: 500;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+  padding: 5px 10px;
+  border-radius: 4px;
+}
+
+.menu-elemento:hover {
+  color: #646cff;
+  background-color: #646cff11; /* Un fondo muy sutil al pasar el ratón */
+}
+
+/* Estilo opcional para resaltar el link activo (si usas NavLink después) */
+.menu-elemento.active {
+  color: #61dafb;
+  border-bottom: 2px solid #61dafb;
+}

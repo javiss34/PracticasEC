@@ -1,0 +1,15 @@
+/* Footer.css */
+.main-footer {
+  width: 100vw; /* Ocupa todo el ancho de la ventana */
+  position: relative; 
+  left: 50%;
+  right: 50%;
+  margin-left: -50vw;
+  margin-right: -50vw;
+  
+  margin-top: 50px; /* Separación de la lista */
+  padding: 2rem 0;
+  background-color: #1a1a1a;
+  border-top: 1px solid #646cff33;
+  color: #888;
+}
