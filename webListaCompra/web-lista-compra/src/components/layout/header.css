@@ -1,43 +1,106 @@
+/* header.css */
+
+/* --- CONTENEDOR PRINCIPAL --- */
 .main-header {
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 70px;
-  background-color: #242424;
+  background-color: #242424; /* Gris oscuro */
+  border-bottom: 1px solid rgba(100, 108, 255, 0.2); /* Línea sutil azulada */
+  
   display: flex;
   align-items: center;
-  justify-content: center;
-  border-bottom: 1px solid #646cff33;
-  z-index: 1000;
+  justify-content: space-between; /* Empuja elementos a los extremos */
+  
   padding: 0 2rem;
   box-sizing: border-box;
+  z-index: 1000;
+  font-family: 'Segoe UI', system-ui, sans-serif;
 }
 
+/* --- ZONA IZQUIERDA (Icono del carrito) --- */
 .header-content {
   display: flex;
   align-items: center;
-  gap: 12px;
 }
 
+.header-icon {
+  font-size: 1.8rem;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.header-icon:hover {
+  transform: scale(1.1);
+}
+
+/* --- TÍTULO H1 (CENTRADO ABSOLUTO) --- */
 .header-content h1 {
-  font-size: 1.5rem;
+  /* Truco para centrarlo perfectamente en la pantalla */
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  
   margin: 0;
+  font-size: 1.5rem;
+  font-weight: 700;
+  white-space: nowrap; /* Evita que el texto se rompa */
+  
+  /* Efecto degradado en el texto */
   background: linear-gradient(45deg, #646cff, #61dafb);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
+/* --- ZONA DERECHA (Panel de Usuario / Botones) --- */
 .header-auth {
-  position: absolute;
-  right: 2rem;
+  display: flex;
+  align-items: center;
+  gap: 15px; /* Espacio entre el saludo y el botón */
 }
 
+/* Enlaces (quitamos subrayado) */
+.header-auth a {
+  text-decoration: none;
+}
+
+/* --- SALUDO ("Hola Pepe") --- */
+.header-auth h3 {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+}
+
+/* --- BOTÓN CERRAR SESIÓN (Estilo Borde Rojo) --- */
+.boton_cerrar_sesion {
+  background-color: transparent;
+  border: 1px solid #ff4d4d;
+  color: #ff4d4d;
+  padding: 6px 16px;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  font-family: inherit;
+}
+
+.boton_cerrar_sesion:hover {
+  background-color: #ff4d4d;
+  color: white;
+  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+}
+
+/* --- BOTÓN INICIAR SESIÓN (Estilo Pastilla con Foto) --- */
 .login-btn {
-  background-color: rgba(255, 255, 255, 0.05); 
-  border: 1px solid #646cff55;
+  background-color: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(100, 108, 255, 0.3);
   color: #fff;
-  padding: 4px 12px 4px 4px; 
+  padding: 4px 16px 4px 4px; /* Padding asimétrico para la foto */
   border-radius: 30px;
   cursor: pointer;
   display: flex;
@@ -45,14 +108,21 @@
   gap: 10px;
   font-size: 0.9rem;
   transition: all 0.3s ease;
+  font-family: inherit;
 }
 
 .login-btn:hover {
-  background-color: #646cff11;
+  background-color: rgba(100, 108, 255, 0.15);
   border-color: #646cff;
   transform: translateY(-1px);
 }
 
+.login-text {
+  margin: 0;
+  font-weight: 500;
+}
+
+/* Círculo para la imagen del usuario (solo en botón login) */
 .user-image-container {
   width: 32px;
   height: 32px;
@@ -61,10 +131,39 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  background-color: #333;
 }
 
 .user-avatar-img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* Asegura que la imagen no se deforme */
+  object-fit: cover;
+}
+
+/* --- RESPONSIVE (Móvil) --- */
+@media (max-width: 768px) {
+  .main-header {
+    padding: 0 1rem;
+  }
+
+  /* En móvil, quitamos el centrado absoluto porque choca con los botones */
+  .header-content h1 {
+    position: static; /* Vuelve a su sitio normal */
+    transform: none;
+    font-size: 1.1rem; /* Texto más pequeño */
+    margin-left: 10px;
+  }
+
+  /* Ocultamos el saludo "Hola Pepe" para ahorrar espacio */
+  .header-auth h3, 
+  .login-text {
+    display: none;
+  }
+
+  /* Ajustamos botón login para que sea solo el círculo */
+  .login-btn {
+    padding: 0;
+    border: none;
+    background: transparent;
+  }
 }

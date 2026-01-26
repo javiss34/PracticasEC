@@ -1,0 +1,113 @@
+.campos_formulario {
+  width: 300px;
+  margin-top: 190px; 
+  margin-right: auto;
+  margin-left: auto;
+  padding: 30px; 
+  background-color: #2a2a2a; 
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.campos_formulario h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #ffffff;
+  font-weight: 600;
+  letter-spacing: 1px; 
+}
+
+
+label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #cccccc;
+  font-size: 0.9rem;
+}
+
+
+input[type="text"],
+input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 25px;
+  background-color: #3b3b3b; 
+  border: 1px solid #555;
+  border-radius: 6px;
+  color: white; 
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+
+input[type="text"]:focus,
+input[type="password"]:focus {
+  border-color: #007bff;
+  outline: none;
+  background-color: #454545;
+  box-shadow: 0 0 8px rgba(0, 123, 255, 0.3);
+}
+
+
+.boton_regsitro {
+  margin-top: 10px;
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(135deg, #007bff 0%, #0056b3 100%); 
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 16px;
+  font-weight: bold;
+  letter-spacing: 0.5px;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.boton_regsitro:hover {
+  transform: translateY(-2px); 
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+}
+
+.boton_regsitro:active {
+  transform: translateY(0);
+}
+
+
+.mensaje_usuario {
+    width: 50%;
+    margin: 20px auto;
+  background-color: rgba(255, 255, 255, 0.1);
+  padding: 12px;
+  border-radius: 6px;
+  text-align: center;
+  color: white;
+  margin-top: 20px;
+  font-size: 0.9rem;
+  border: 1px solid rgba(162, 196, 83, 0.2);
+}
+
+
+.enlace_registro, .enlace_inicio_sesion {
+  margin-bottom: 5px;
+  text-align: center;
+  font-size: 0.95rem;
+}
+
+
+.enlace_registro a, .enlace_inicio_sesion a {
+  color: #6ea8fe;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s ease;
+}
+
+
+.enlace_registro a:hover, .enlace_inicio_sesion a:hover {
+  color: #ffffff;
+  text-decoration: underline;
+  text-shadow: 0 0 8px rgba(110, 168, 254, 0.6); 
+}

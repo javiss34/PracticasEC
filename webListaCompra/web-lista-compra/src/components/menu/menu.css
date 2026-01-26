@@ -1,6 +1,6 @@
 .sub-menu {
   position: fixed;
-  top: 71px; /* Justo debajo de los 70px del Header */
+  top: 71px;
   left: 0;
   width: 100%;
   height: 50px;
@@ -8,13 +8,13 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 30px; /* Espacio entre los links */
+  gap: 30px;
   z-index: 999;
   border-bottom: 1px solid #646cff22;
 }
 
 .menu-elemento {
-  text-decoration: none; /* Quita el subrayado azul por defecto */
+  text-decoration: none;
   color: #ccc;
   font-weight: 500;
   font-size: 0.9rem;
@@ -27,10 +27,10 @@
 
 .menu-elemento:hover {
   color: #646cff;
-  background-color: #646cff11; /* Un fondo muy sutil al pasar el ratón */
+  background-color: #646cff11;
 }
 
-/* Estilo opcional para resaltar el link activo (si usas NavLink después) */
+
 .menu-elemento.active {
   color: #61dafb;
   border-bottom: 2px solid #61dafb;
