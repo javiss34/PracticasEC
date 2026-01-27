@@ -23,11 +23,11 @@ const useSupabase = () => {
     }
   };
 
-  const obtener = (tabla) => {
-    ejecutar(supabaseConexion.from(tabla).select("*"));
+  const obtener = async(tabla) => {
+    await ejecutar(supabaseConexion.from(tabla).select("*"));
   }
-  const insertar = (tabla,datos) => {
-    ejecutar(supabaseConexion.from(tabla).insert(datos));
+  const insertar = async(tabla,datos) => {
+    await ejecutar(supabaseConexion.from(tabla).insert(datos));
   }
   const eliminar = (id) => {
     ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))

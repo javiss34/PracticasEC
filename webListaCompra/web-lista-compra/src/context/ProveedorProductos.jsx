@@ -1,10 +1,6 @@
 import React, { createContext, useEffect, useState } from "react";
 import { supabaseConexion } from "../supabase/supabase.js";
 import useSupabase from "../hooks/useSupabase.js";
-/* Esta práctica te la habí entregado antes de que especificaras en clase que la lista tenia que ser
-visible para cualquiera y que los filtros solo los pueden usar los usuarios registrados y logeados,
-por lo que verás componentes que pertenecen a la práctica siguiente que ya había empezado como 
-FormularioInsertarProductos.jsx */
 
 const contextoProductos = createContext();
 
@@ -26,7 +22,7 @@ const ProveedorProductos = ({ children }) => {
   const [filtro, setFiltro] = useState(filtroIncial);
   const [orden, setOrden] = useState(ordenInicial);
 
-  const { ejecutar, cargando, error } = useSupabase();
+  const { ejecutar,insertar, cargando, error } = useSupabase();
 
   /* Como hay varias posibilidades de filtros y de ordenaciones, he pensado que lo mejor es generar una función para crear
     la consulta según el filtro y otra para ordenar según la columna y si quiere ascendente o descendente. Y luego la función listarProductos,
@@ -59,6 +55,13 @@ const ProveedorProductos = ({ children }) => {
         setProductos(resultado);
       }
   };
+
+  const insertarProductos = async(nuevoProducto) => {
+    const resultado = await insertar("productos",nuevoProducto);
+    if(resultado){
+      listarProductos();
+    }
+  }
 
   const actualizarFiltro = (e) => {
     const { name, value } = e.target;
