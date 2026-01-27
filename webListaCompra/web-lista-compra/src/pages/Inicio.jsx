@@ -14,14 +14,14 @@ const Inicio = () => {
           Organiza tu mundo <span className="texto-destacado">digital</span>
         </h1>
         <p className="slogan">
-          La mejor forma de gestionar tu colección de discos y listas de la compra
+          La mejor forma de gestionar tu lista de la compra
           en un solo lugar. Rápido, seguro y en la nube.
         </p>
 
         <div className="acciones">
           {sesionIniciada ? (
             <Link to="/listado" className="boton-inicio primario">
-              🚀 Ir a mi Colección
+              🚀 Ir a mi Lista
             </Link>
           ) : (
             <>

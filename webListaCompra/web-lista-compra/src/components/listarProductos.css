@@ -1,0 +1,172 @@
+/* --- Contenedor Principal (Igualando estilos de inicio) --- */
+.contenedor_listado {
+  max-width: 1200px; /* Un poco más ancho que inicio para que quepan productos */
+  margin: 0 auto;    /* Centrado horizontal */
+  
+  /* ESTA ES LA CLAVE PARA BAJARLO DEL HEADER */
+  margin-top: -180px;  
+  
+  padding: 40px 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white; /* Texto blanco igual que inicio */
+  
+  /* Animación de entrada igual que en inicio */
+  animation: fadeIn 1s ease-in-out;
+}
+
+/* Asegúrate de tener el keyframes definido si no es global */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.contenedor_listado > h2 {
+  text-align: center;
+  margin-bottom: 40px;
+  font-size: 3.5rem; /* Igualando el tamaño de .titulo-principal */
+  font-weight: 700;
+  /* El gradiente azul bonito de tu inicio para el título */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Mantenemos los estilos de Filtros y Grid que ya funcionaban bien --- */
+
+/* Filtros */
+.filtro, 
+.contenedor_listado > div:nth-child(3) {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 15px;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+  background-color: #2a2a2a; /* Fondo oscuro igual que tus .feature-card */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+}
+
+.filtro legend {
+  font-weight: 600;
+  margin-right: 10px;
+  color: #cccccc;
+}
+
+/* Grid de Productos */
+.lista_productos {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+
+/* Tarjeta de Producto (Estilo adaptado a tus .feature-card) */
+.producto {
+  background-color: #2a2a2a; /* Mismo gris oscuro que inicio */
+  padding: 20px;
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
+  transition: transform 0.3s, border-color 0.3s;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  cursor: pointer;
+}
+
+.producto:hover {
+  transform: translateY(-5px);
+  border-color: #007bff; /* Borde azul al pasar el ratón, igual que inicio */
+}
+
+.producto h2 {
+  font-size: 1.5rem;
+  margin-bottom: 10px;
+  color: white;
+}
+
+.producto h4 {
+  margin: 5px 0;
+  color: #aaa;
+}
+
+.producto h4:nth-of-type(2) {
+  color: #00d2ff; /* Precio en azul cian */
+  font-weight: bold;
+  font-size: 1.2rem;
+}
+
+.imagen_producto {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin: 15px 0;
+  background-color: #333;
+}
+
+.producto p {
+  color: #cccccc;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.sin_productos {
+  grid-column: 1 / -1; 
+  width: 100%;
+  text-align: center;
+  padding: 60px 20px;
+  margin-top: 20px;
+  background-color: rgba(255, 255, 255, 0.02); 
+  border: 2px dashed #555; 
+  border-radius: 12px;
+  color: #888;
+  font-size: 1.4rem;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+.cuadro_resumen {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: #2a2a2a; 
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
+  border-top: 3px solid #007bff; 
+}
+
+
+.cuadro_resumen ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex; 
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 40px; 
+}
+
+
+.cuadro_resumen li {
+  font-size: 1.2rem;
+  color: #e0e0e0;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cuadro_resumen li::before {
+  content: '';
+  display: block;
+  width: 10px;
+  height: 10px;
+  background-color: #00d2ff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.5); 
+}
