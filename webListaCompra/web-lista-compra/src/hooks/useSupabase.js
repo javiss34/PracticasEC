@@ -26,12 +26,24 @@ const useSupabase = () => {
   const obtener = (tabla) => {
     ejecutar(supabaseConexion.from(tabla).select("*"));
   }
+  const insertar = (tabla,datos) => {
+    ejecutar(supabaseConexion.from(tabla).insert(datos));
+  }
+  const eliminar = (id) => {
+    ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))
+  }
+  const editar = (tabla,datos) => {
+    ejecutar(supabaseConexion.from(tabla).update(datos).eq("id",datos.id));
+  }
 
   return {
     cargando,
     error,
     ejecutar,
-    obtener
+    obtener,
+    insertar,
+    eliminar,
+    editar
   };
 };
 

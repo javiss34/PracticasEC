@@ -1,6 +1,10 @@
 import React, { createContext, useEffect, useState } from "react";
 import { supabaseConexion } from "../supabase/supabase.js";
 import useSupabase from "../hooks/useSupabase.js";
+/* Esta práctica te la habí entregado antes de que especificaras en clase que la lista tenia que ser
+visible para cualquiera y que los filtros solo los pueden usar los usuarios registrados y logeados,
+por lo que verás componentes que pertenecen a la práctica siguiente que ya había empezado como 
+FormularioInsertarProductos.jsx */
 
 const contextoProductos = createContext();
 
@@ -54,7 +58,6 @@ const ProveedorProductos = ({ children }) => {
       if (resultado) {
         setProductos(resultado);
       }
-    
   };
 
   const actualizarFiltro = (e) => {
@@ -70,6 +73,12 @@ const ProveedorProductos = ({ children }) => {
     setOrden({ tipo, asc: direccion === "asc" });
   };
 
+  const actualizarDato = (e) => {
+    const {name,value} = e.target;
+    console.log(name,value);
+    setProductos({...productos,[name]:value});
+  }
+
   useEffect(() => {
     listarProductos();
   }, [filtro, orden]);
@@ -82,6 +91,7 @@ const ProveedorProductos = ({ children }) => {
     orden,
     actualizarFiltro,
     actualizarOrden,
+    actualizarDato
   };
 
   return (
