@@ -9,7 +9,7 @@ const FormularioInsertarProductos = () => {
     precio: "",
     url_imagen: "",
     descripcion: "",
-  };
+  }; 
   const { actualizarDato } = useProductos();
 
   return (

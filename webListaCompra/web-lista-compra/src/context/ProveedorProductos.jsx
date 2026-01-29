@@ -22,7 +22,7 @@ const ProveedorProductos = ({ children }) => {
   const [filtro, setFiltro] = useState(filtroIncial);
   const [orden, setOrden] = useState(ordenInicial);
 
-  const { ejecutar,insertar, cargando, error } = useSupabase();
+  const { ejecutar,insertar,eliminar,editar, cargando, error } = useSupabase();
 
   /* Como hay varias posibilidades de filtros y de ordenaciones, he pensado que lo mejor es generar una función para crear
     la consulta según el filtro y otra para ordenar según la columna y si quiere ascendente o descendente. Y luego la función listarProductos,
@@ -61,6 +61,17 @@ const ProveedorProductos = ({ children }) => {
     if(resultado){
       listarProductos();
     }
+  }
+
+  const eliminarProducto = async(id) => {
+    const resultado = eliminar(id);
+    if(resultado){
+      listarProductos();
+    }
+  }
+
+  const editarProducto = async(productoActualizado) => {
+    const resultado = editar("productos",productoActualizado);
   }
 
   const actualizarFiltro = (e) => {
