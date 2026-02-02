@@ -64,7 +64,7 @@ const ProveedorProductos = ({ children }) => {
   }
 
   const eliminarProducto = async(id) => {
-    const resultado = eliminar("tabla",id);
+    const resultado = eliminar("productos",id);
     if(resultado){
       listarProductos();
     }

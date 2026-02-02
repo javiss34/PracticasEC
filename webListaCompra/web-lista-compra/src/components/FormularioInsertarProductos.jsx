@@ -1,6 +1,7 @@
 import React, { use, useEffect, useState } from "react";
 import useProductos from "../hooks/useProductos.js";
 import "./formularioInsertarProductos.css";
+import { validarString, validarFloat } from "../library/validaciones.js";
 
 const FormularioInsertarProductos = () => {
   const productoInicial = {
@@ -9,42 +10,72 @@ const FormularioInsertarProductos = () => {
     precio: "",
     url_imagen: "",
     descripcion: "",
-  }; 
-  const [producto,setProducto] = useState(productoInicial);
-  const [listaErrores,setListaErrores] = useState([]);
-  const {insertarProductos} = useProductos();
+  };
+  const [producto, setProducto] = useState(productoInicial);
+  const [objetoErrores,setObjetoErrores] = useState({});
+  const [listaErrores, setListaErrores] = useState([]);
+
+  const { insertarProductos } = useProductos();
 
   const actualizarDato = (e) => {
-    const {name,value} = e.target;
-    setProducto({...producto,[name]:value});
-  }
+    const { name, value } = e.target;
+    setProducto({ ...producto, [name]: value });
+  };
 
-  const validarFormulario = async(e) => {
+  const validarDato = (name, value) => {
+    let error = "";
+
+    if (name === "nombre") {
+      error = validarString(name, value);
+    }
+    if (name === "peso") {
+      error = validarFloat(name, value);
+    }
+    if (name === "precio") {
+      error = validarFloat(name, value);
+    }
+    return error;
+  };
+
+  const validarFormulario = async (e) => {
     e.preventDefault();
-    let errores = [];
+    let objetoErroresActuales = {};
+    let listaErroresActuales = [];
+    let formularioValido = true;
 
-    //Hacemos obligatorios estos dos campos, que son los que considero esenciales.
-    if(!producto.nombre){
-      errores = [...errores,"El nombre del producto es obligatorio"];
+    //Hacemos obligatorios estos campos, que son los que considero esenciales.
+    const errorNombre = validarDato("nombre", producto.nombre);
+    if(errorNombre){
+      objetoErroresActuales.nombre = errorNombre;
+      listaErroresActuales = [...listaErroresActuales,errorNombre];
+      formularioValido = false;
     }
-    if(!producto.precio || producto.precio<0){
-      errores = [...errores,"El precio del producto es obligatorio y no puede ser negativo"];
-    }
-    setListaErrores(errores);
 
-    if(errores.length === 0){
+    const errorPeso = validarDato("peso",producto.peso);
+    if(errorPeso){
+      objetoErroresActuales.peso = errorPeso;
+      listaErroresActuales=[...listaErroresActuales,errorPeso];
+      formularioValido = false;
+    }
+    const errorPrecio = validarDato("precio",producto.precio);
+    if(errorPrecio){
+      objetoErroresActuales.precio = errorPrecio;
+      listaErroresActuales=[...listaErroresActuales,errorPrecio];
+      formularioValido = false;
+    }
+    setObjetoErrores(objetoErroresActuales);
+    setListaErrores(listaErroresActuales);
+
+    if (listaErroresActuales.length === 0) {
       try {
         await insertarProductos(producto);
         setProducto(productoInicial);
         setListaErrores([]);
-        
       } catch (error) {
-        setListaErrores([...errores,error.message]);
-
+        setListaErrores([...listaErroresActuales, error.message]);
       }
     }
-
-  }
+  };
 
   return (
     <div className="contenedor_formulario">
@@ -110,11 +141,19 @@ const FormularioInsertarProductos = () => {
         />
         <br />
         <br />
-        <input type="button" id="boton_guardar" value="Guardar producto" onClick={(e)=>{validarFormulario(e)}} />
+        <input
+          type="button"
+          id="boton_guardar"
+          value="Guardar producto"
+          onClick={(e) => {
+            validarFormulario(e);
+          }}
+        />
       </form>
       <div className="zona_errores">
-          {listaErrores && listaErrores.map((error) => {
-            return <p>{error}</p>
+        {listaErrores &&
+          listaErrores.map((error) => {
+            return <p>{error}</p>;
           })}
       </div>
     </div>

@@ -8,11 +8,6 @@ const Producto = ({ producto }) => {
   const { sesionIniciada } = useSesion();
   const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
 
-  const borrarProducto = () => {
-    eliminarProducto(producto.id);
-    setMostrarConfirmacion(false);
-  };
-
   return (
     <>
       <div key={producto.id} className="producto">
@@ -42,19 +37,18 @@ const Producto = ({ producto }) => {
             />
           </div>
         )}
-        <div>
-          <ConfirmacionBorrar
-            mostrar={mostrarConfirmacion}
-            mensaje={`Seguro que deseas borrar el siguiente producto: ${producto.nombre}`}
-            cancelar={() => {
-              setMostrarConfirmacion(false);
-            }}
-            confirmar={() => {
-              borrarProducto();
-            }}
-          />
-        </div>
       </div>
+      <ConfirmacionBorrar
+        mostrar={mostrarConfirmacion}
+        mensaje={`Seguro que deseas borrar el siguiente producto: ${producto.nombre}`}
+        cancelar={() => {
+          setMostrarConfirmacion(false);
+        }}
+        confirmar={() => {
+          eliminarProducto(producto.id);
+          setMostrarConfirmacion(false);
+        }}
+      />
     </>
   );
 };
