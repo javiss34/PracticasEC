@@ -29,7 +29,7 @@ const useSupabase = () => {
   const insertar = async(tabla,datos) => {
     await ejecutar(supabaseConexion.from(tabla).insert(datos));
   }
-  const eliminar = (id) => {
+  const eliminar = (tabla,id) => {
     ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))
   }
   const editar = (tabla,datos) => {

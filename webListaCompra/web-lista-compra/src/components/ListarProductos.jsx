@@ -2,6 +2,7 @@ import React from "react";
 import useProductos from "../hooks/useProductos.js";
 import useSesion from "../hooks/useSesion.js";
 import "./listarProductos.css";
+import Producto from "./Producto.jsx";
 
 const ListarProductos = () => {
   const { productos, filtro, actualizarFiltro, actualizarOrden } =
@@ -60,17 +61,7 @@ const ListarProductos = () => {
       <div className="lista_productos">
         {productos.length > 0 ? (
           productos.map((producto) => (
-            <div key={producto.id} className="producto">
-              <h2>{producto.nombre}</h2>
-              <h4>Peso: {producto.peso}g</h4>
-              <h4>Precio: {producto.precio}€</h4>
-              <img
-                src={producto.imagen_url}
-                alt={producto.nombre}
-                className="imagen_producto"
-              />
-              <p>{producto.descripcion}</p>
-            </div>
+            <Producto producto={producto}/>
           ))
         ) : (
           <h2 className="sin_productos">No hay productos</h2>

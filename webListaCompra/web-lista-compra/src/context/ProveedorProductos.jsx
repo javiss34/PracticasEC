@@ -64,7 +64,7 @@ const ProveedorProductos = ({ children }) => {
   }
 
   const eliminarProducto = async(id) => {
-    const resultado = eliminar(id);
+    const resultado = eliminar("tabla",id);
     if(resultado){
       listarProductos();
     }
@@ -72,6 +72,9 @@ const ProveedorProductos = ({ children }) => {
 
   const editarProducto = async(productoActualizado) => {
     const resultado = editar("productos",productoActualizado);
+    if(resultado){
+      listarProductos();
+    }
   }
 
   const actualizarFiltro = (e) => {
@@ -87,12 +90,6 @@ const ProveedorProductos = ({ children }) => {
     setOrden({ tipo, asc: direccion === "asc" });
   };
 
-  const actualizarDato = (e) => {
-    const {name,value} = e.target;
-    console.log(name,value);
-    setProductos({...productos,[name]:value});
-  }
-
   useEffect(() => {
     listarProductos();
   }, [filtro, orden]);
@@ -104,8 +101,10 @@ const ProveedorProductos = ({ children }) => {
     filtro,
     orden,
     actualizarFiltro,
+    insertarProductos,
     actualizarOrden,
-    actualizarDato
+    eliminarProducto,
+    editarProducto
   };
 
   return (

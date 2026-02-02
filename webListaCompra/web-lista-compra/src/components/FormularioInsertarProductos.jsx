@@ -1,16 +1,50 @@
-import React, { useState } from "react";
+import React, { use, useEffect, useState } from "react";
 import useProductos from "../hooks/useProductos.js";
 import "./formularioInsertarProductos.css";
 
 const FormularioInsertarProductos = () => {
-  const nuevoProducto = {
+  const productoInicial = {
     nombre: "",
     peso: "",
     precio: "",
     url_imagen: "",
     descripcion: "",
   }; 
-  const { actualizarDato } = useProductos();
+  const [producto,setProducto] = useState(productoInicial);
+  const [listaErrores,setListaErrores] = useState([]);
+  const {insertarProductos} = useProductos();
+
+  const actualizarDato = (e) => {
+    const {name,value} = e.target;
+    setProducto({...producto,[name]:value});
+  }
+
+  const validarFormulario = async(e) => {
+    e.preventDefault();
+    let errores = [];
+
+    //Hacemos obligatorios estos dos campos, que son los que considero esenciales.
+    if(!producto.nombre){
+      errores = [...errores,"El nombre del producto es obligatorio"];
+    }
+    if(!producto.precio || producto.precio<0){
+      errores = [...errores,"El precio del producto es obligatorio y no puede ser negativo"];
+    }
+    setListaErrores(errores);
+
+    if(errores.length === 0){
+      try {
+        await insertarProductos(producto);
+        setProducto(productoInicial);
+        setListaErrores([]);
+        
+      } catch (error) {
+        setListaErrores([...errores,error.message]);
+
+      }
+    }
+
+  }
 
   return (
     <div className="contenedor_formulario">
@@ -21,6 +55,7 @@ const FormularioInsertarProductos = () => {
           type="text"
           id="nombre"
           name="nombre"
+          value={producto.nombre}
           onChange={(e) => {
             actualizarDato(e);
           }}
@@ -32,6 +67,7 @@ const FormularioInsertarProductos = () => {
           type="number"
           id="peso"
           name="peso"
+          value={producto.peso}
           onChange={(e) => {
             actualizarDato(e);
           }}
@@ -43,6 +79,7 @@ const FormularioInsertarProductos = () => {
           type="number"
           id="precio"
           name="precio"
+          value={producto.precio}
           onChange={(e) => {
             actualizarDato(e);
           }}
@@ -54,6 +91,7 @@ const FormularioInsertarProductos = () => {
           type="url"
           id="url_imagen"
           name="url_imagen"
+          value={producto.url_imagen}
           onChange={(e) => {
             actualizarDato(e);
           }}
@@ -65,14 +103,20 @@ const FormularioInsertarProductos = () => {
           type="text"
           id="descripcion"
           name="descripcion"
+          value={producto.descripcion}
           onChange={(e) => {
             actualizarDato(e);
           }}
         />
         <br />
         <br />
-        <input type="button" id="boton_guardar" value="Guardar producto" />
+        <input type="button" id="boton_guardar" value="Guardar producto" onClick={(e)=>{validarFormulario(e)}} />
       </form>
+      <div className="zona_errores">
+          {listaErrores && listaErrores.map((error) => {
+            return <p>{error}</p>
+          })}
+      </div>
     </div>
   );
 };

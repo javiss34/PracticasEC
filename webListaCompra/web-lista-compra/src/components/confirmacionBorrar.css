@@ -1,0 +1,50 @@
+/* La caja blanca centrada */
+.mensaje_confirmacion {
+  position: fixed;            
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%); 
+  color: rgb(255, 255, 255);
+  background-color: rgb(0, 0, 0);
+  padding: 20px;
+  border: 1px solid #00BCD4;     
+  box-shadow: 0 5px 15px rgba(0,0,0,0.2); 
+  border-radius: 8px;         
+  
+  text-align: center;        
+  z-index: 1000;             
+  width: 300px;
+}
+
+/* El texto */
+.mensaje_confirmacion p {
+  margin-bottom: 20px;
+  font-size: 16px;
+}
+
+/* Los contenedores de los botones para que salgan uno al lado del otro */
+.boton_rechazar, 
+.boton_confirmar {
+  display: inline-block;     
+  margin: 0 10px;            
+}
+
+/* Estilo general de los botones */
+input[type="button"] {
+  padding: 8px 15px;
+  cursor: pointer;
+  border: none;
+  border-radius: 4px;
+  font-weight: bold;
+}
+
+/* Colores específicos */
+.boton_rechazar input {
+  background-color: #e0e0e0; 
+  color: black;
+}
+
+.boton_confirmar input {
+  background-color: #ff4444; 
+  color: white;
+}
