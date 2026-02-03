@@ -3,6 +3,7 @@ import useProductos from "../hooks/useProductos.js";
 import useSesion from "../hooks/useSesion.js";
 import "./listarProductos.css";
 import Producto from "./Producto.jsx";
+import { formatearPrecio } from "../library/formato.js";
 
 const ListarProductos = () => {
   const { productos, filtro, actualizarFiltro, actualizarOrden } =
@@ -61,7 +62,7 @@ const ListarProductos = () => {
       <div className="lista_productos">
         {productos.length > 0 ? (
           productos.map((producto) => (
-            <Producto producto={producto}/>
+            <Producto key={producto.id} producto={producto}/>
           ))
         ) : (
           <h2 className="sin_productos">No hay productos</h2>
@@ -70,7 +71,7 @@ const ListarProductos = () => {
       <div className="cuadro_resumen">
         <ul>
           <li>Total de productos: {productos.length}</li>
-          <li>Precio medio: {calcularPrecioMedio()}€</li>
+          <li>Precio medio: {formatearPrecio(calcularPrecioMedio())}</li>
         </ul>
       </div>
     </div>

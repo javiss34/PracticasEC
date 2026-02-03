@@ -1,4 +1,4 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import "./header.css";
 import useSesion from "../../hooks/useSesion.js";
 import ConfirmacionBorrar from "../ConfirmacionBorrar.jsx";
@@ -7,6 +7,7 @@ import { useState } from "react";
 const Header = () => {
   const { sesionIniciada, cerrarSesion, datosUsuario } = useSesion();
   const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
+  const navegar = useNavigate();
 
   const nombre = datosUsuario?.user_metadata?.nombre || "...Cargando";
 
@@ -56,6 +57,7 @@ const Header = () => {
         confirmar={() => {
           cerrarSesion();
           setMostrarConfirmacion(false);
+          navegar("/iniciar_sesion");
         }}
         cancelar={() => setMostrarConfirmacion(false)}
       />

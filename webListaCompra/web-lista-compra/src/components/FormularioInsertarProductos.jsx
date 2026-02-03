@@ -2,26 +2,58 @@ import React, { use, useEffect, useState } from "react";
 import useProductos from "../hooks/useProductos.js";
 import "./formularioInsertarProductos.css";
 import { validarString, validarFloat } from "../library/validaciones.js";
+import MostrarError from "../components/errores/MostrarError.jsx";
+import { useNavigate, useParams } from "react-router-dom";
 
+/* He hecho un único formulario tanto para 
+insertarProductos, como para modificarlos */
 const FormularioInsertarProductos = () => {
   const productoInicial = {
     nombre: "",
     peso: "",
     precio: "",
-    url_imagen: "",
+    imagen_url: "",
     descripcion: "",
   };
   const [producto, setProducto] = useState(productoInicial);
-  const [objetoErrores,setObjetoErrores] = useState({});
+  /* Creo dos estados de errores:
+  - Una lista de errores para que se muestre debajo del formulario
+  -Un objeto de errores que por cada input que sea erroneo almacenara un error con ese nombre */
+  const [objetoErrores, setObjetoErrores] = useState({});
   const [listaErrores, setListaErrores] = useState([]);
 
-  const { insertarProductos } = useProductos();
+  const { insertarProductos, productos, editarProducto } = useProductos();
+
+  const { id } = useParams();
+  const navegar = useNavigate();
+
+  useEffect(() => {
+    //Si se le pasa un parámetro, se establece ese producto.
+    if (id) {
+      const productoEncontrado = productos.find(
+        (producto) => producto.id === id,
+      );
+      if (productoEncontrado) {
+        setProducto(productoEncontrado);
+      } else {
+        navegar("/listado");
+      }
+      //Si no se le pasa ningun parametro se establece el objeto producto vacío.
+    } else {
+      setProducto(productoInicial);
+    }
+  }, [id, productos]);
 
   const actualizarDato = (e) => {
     const { name, value } = e.target;
+    //Cada vez que el usuario escribe en un input en rojo se quita el error
+    const nuevosErroresObj = { ...objetoErrores };
+    nuevosErroresObj[name] = "";
+    setObjetoErrores(nuevosErroresObj);
     setProducto({ ...producto, [name]: value });
   };
 
+  //Voy a válidar solo los campos nombre, peso y precio, que son los que me parecen esenciales.
   const validarDato = (name, value) => {
     let error = "";
 
@@ -43,34 +75,41 @@ const FormularioInsertarProductos = () => {
     let listaErroresActuales = [];
     let formularioValido = true;
 
-    //Hacemos obligatorios estos campos, que son los que considero esenciales.
+    /* Tanto al objeto como a la lista de errores, le asignamos el error
+    correspondiente, en caso de que validarDato devuelva un error */
     const errorNombre = validarDato("nombre", producto.nombre);
-    if(errorNombre){
+    if (errorNombre) {
       objetoErroresActuales.nombre = errorNombre;
-      listaErroresActuales = [...listaErroresActuales,errorNombre];
+      listaErroresActuales = [...listaErroresActuales, errorNombre];
       formularioValido = false;
     }
-
-    const errorPeso = validarDato("peso",producto.peso);
-    if(errorPeso){
+    const errorPeso = validarDato("peso", producto.peso);
+    if (errorPeso) {
       objetoErroresActuales.peso = errorPeso;
-      listaErroresActuales=[...listaErroresActuales,errorPeso];
+      listaErroresActuales = [...listaErroresActuales, errorPeso];
       formularioValido = false;
     }
-    const errorPrecio = validarDato("precio",producto.precio);
-    if(errorPrecio){
+    const errorPrecio = validarDato("precio", producto.precio);
+    if (errorPrecio) {
       objetoErroresActuales.precio = errorPrecio;
-      listaErroresActuales=[...listaErroresActuales,errorPrecio];
+      listaErroresActuales = [...listaErroresActuales, errorPrecio];
       formularioValido = false;
     }
     setObjetoErrores(objetoErroresActuales);
     setListaErrores(listaErroresActuales);
 
-    if (listaErroresActuales.length === 0) {
+    if (formularioValido) {
       try {
-        await insertarProductos(producto);
-        setProducto(productoInicial);
-        setListaErrores([]);
+        //Si hay id, el producto se edita
+        if (id) {
+          await editarProducto(producto);
+          navegar("/listado");
+          //Si no hay id, el producto se crea
+        } else {
+          await insertarProductos(producto);
+          setProducto(productoInicial);
+          setListaErrores([]);
+        }
       } catch (error) {
         setListaErrores([...listaErroresActuales, error.message]);
       }
@@ -79,56 +118,53 @@ const FormularioInsertarProductos = () => {
 
   return (
     <div className="contenedor_formulario">
-      <legend>Añade productos a tu lista</legend>
+      <legend>
+        {id ? "Actualiza el producto" : "Añade productos a tu lista"}
+      </legend>
       <form>
         <label htmlFor="nombre">Nombre:</label>
         <input
           type="text"
           id="nombre"
           name="nombre"
+          className={objetoErrores.nombre ? "error" : ""}
           value={producto.nombre}
           onChange={(e) => {
             actualizarDato(e);
           }}
         />
-        <br />
-        <br />
         <label htmlFor="peso">Peso:</label>
         <input
           type="number"
           id="peso"
           name="peso"
+          className={objetoErrores.peso ? "error" : ""}
           value={producto.peso}
           onChange={(e) => {
             actualizarDato(e);
           }}
         />
-        <br />
-        <br />
         <label htmlFor="precio">Precio:</label>
         <input
           type="number"
           id="precio"
           name="precio"
+          className={objetoErrores.precio ? "error" : ""}
           value={producto.precio}
           onChange={(e) => {
             actualizarDato(e);
           }}
         />
-        <br />
-        <br />
-        <label htmlFor="url_imagen">URL Imágen:</label>
+        <label htmlFor="imagen_url">URL Imágen:</label>
         <input
           type="url"
-          id="url_imagen"
-          name="url_imagen"
-          value={producto.url_imagen}
+          id="imagen_url"
+          name="imagen_url"
+          value={producto.imagen_url}
           onChange={(e) => {
             actualizarDato(e);
           }}
         />
-        <br />
-        <br />
         <label htmlFor="descripcion">Descripción:</label>
         <input
           type="text"
@@ -139,22 +175,17 @@ const FormularioInsertarProductos = () => {
             actualizarDato(e);
           }}
         />
-        <br />
-        <br />
         <input
           type="button"
           id="boton_guardar"
-          value="Guardar producto"
+          value={id ? "Actualizar Producto" : "Guardar Producto"}
           onClick={(e) => {
             validarFormulario(e);
           }}
         />
       </form>
       <div className="zona_errores">
-        {listaErrores &&
-          listaErrores.map((error) => {
-            return <p>{error}</p>;
-          })}
+        <MostrarError errores={listaErrores} />
       </div>
     </div>
   );

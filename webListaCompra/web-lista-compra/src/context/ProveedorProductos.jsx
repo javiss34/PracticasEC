@@ -64,17 +64,13 @@ const ProveedorProductos = ({ children }) => {
   }
 
   const eliminarProducto = async(id) => {
-    const resultado = eliminar("productos",id);
-    if(resultado){
+    await eliminar("productos",id);
       listarProductos();
-    }
   }
 
   const editarProducto = async(productoActualizado) => {
-    const resultado = editar("productos",productoActualizado);
-    if(resultado){
+      await editar("productos",productoActualizado);
       listarProductos();
-    }
   }
 
   const actualizarFiltro = (e) => {

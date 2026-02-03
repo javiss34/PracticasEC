@@ -18,22 +18,23 @@ const useSupabase = () => {
       }
     } catch (error) {
         setError(error.message);
+        throw error;
     } finally {
         setCargando(false);
     }
   };
 
-  const obtener = async(tabla) => {
-    await ejecutar(supabaseConexion.from(tabla).select("*"));
+  const obtener = (tabla) => {
+    return ejecutar(supabaseConexion.from(tabla).select("*"));
   }
-  const insertar = async(tabla,datos) => {
-    await ejecutar(supabaseConexion.from(tabla).insert(datos));
+  const insertar = (tabla,datos) => {
+    return ejecutar(supabaseConexion.from(tabla).insert(datos).select());
   }
   const eliminar = (tabla,id) => {
-    ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))
+    return ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))
   }
   const editar = (tabla,datos) => {
-    ejecutar(supabaseConexion.from(tabla).update(datos).eq("id",datos.id));
+    return ejecutar(supabaseConexion.from(tabla).update(datos).eq("id",datos.id));
   }
 
   return {

@@ -1,14 +1,19 @@
 import React from "react";
 import useSesion from "../hooks/useSesion.js";
 import "./formularioAuth.css";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 /* He decidido hacer un solo formulario tanto para el registro como para el inicio de sesión
 y dependiendo de si se trata de un registro o de un inicio de sesión se muestran unas cosas 
 u otras */
 const FormularioAuth = ({ registro }) => {
-  const { actualizarDato, registrar, mensajeUsuario, iniciarSesion } =
-    useSesion();
+  const {
+    actualizarDato,
+    registrar,
+    mensajeUsuario,
+    iniciarSesion,
+    sesionIniciada,
+  } = useSesion();
 
   /* Esta función sirve para hacer un registro o un inicio de sesión en la base de datos
   dependiendo de que se le haya pasado por props. */
