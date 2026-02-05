@@ -1,0 +1,105 @@
+/* --- Contenedor Principal --- */
+.contenedor_lista {
+  max-width: 1200px;
+  margin: 0 auto;
+  /* Ajusta este margin-top según tu header. 
+     Si tienes un header grande tipo Hero, usa el negativo (-100px o -180px)
+     Si no, usa un margen positivo normal (40px) */
+  margin-top: 280px; 
+  padding: 0 20px;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Grid (Rejilla) de Listas --- */
+.lista_listas {
+  display: grid;
+  /* Esto crea columnas automáticas que se ajustan al ancho (minimo 300px) */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+  padding-bottom: 50px;
+}
+
+/* --- Tarjeta Individual (Card) --- */
+.card-lista {
+  background-color: #2a2a2a; /* Fondo gris oscuro */
+  border: 1px solid rgba(255, 255, 255, 0.05); /* Borde sutil */
+  border-radius: 16px;
+  padding: 25px;
+  min-height: 120px; /* Altura mínima para que se vean uniformes */
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Centrar contenido verticalmente */
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+  cursor: pointer; /* Manita al pasar el ratón */
+  overflow: hidden;
+}
+
+/* Efecto Hover (Al pasar el ratón) */
+.card-lista:hover {
+  transform: translateY(-8px); /* Se eleva */
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+  border-color: #00d2ff; /* Borde azul brillante */
+}
+
+/* --- Decoración: Barra lateral de color en la tarjeta --- */
+.card-lista::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 5px;
+  background: linear-gradient(to bottom, #007bff, #00d2ff); /* Gradiente azul */
+  border-top-left-radius: 16px;
+  border-bottom-left-radius: 16px;
+  opacity: 0.7;
+  transition: opacity 0.3s;
+}
+
+.card-lista:hover::before {
+  opacity: 1; /* Se ilumina al pasar el ratón */
+}
+
+/* --- Título de la Lista --- */
+.card-lista h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  /* Si el nombre es muy largo, que ponga puntos suspensivos (...) */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* Añadimos un pequeño subtítulo o fecha (opcional para el futuro) */
+.card-lista p {
+  color: #aaaaaa;
+  font-size: 0.9rem;
+  margin-top: 10px;
+}
+
+/* --- Estado Vacío (No hay listas) --- */
+.lista_listas > h2 {
+  /* Esto hace que el mensaje ocupe todo el ancho del grid */
+  grid-column: 1 / -1; 
+  
+  text-align: center;
+  padding: 60px;
+  background-color: rgba(255, 255, 255, 0.03);
+  border: 2px dashed #555;
+  border-radius: 12px;
+  color: #888;
+  font-weight: 400;
+}
+
+.contenedor_lista{
+  margin-top:200px ;
+}

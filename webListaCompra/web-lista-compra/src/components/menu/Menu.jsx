@@ -11,12 +11,14 @@ const Menu = () => {
       </Link>
       {/* Si la sesión está iniciada se muestra también la parte listado */}
       <Link className="menu-elemento" to="/listado">
-        Listado
+        Productos
       </Link>
       {sesionIniciada && (
-          <Link className="menu-elemento" to="/insertar_productos">
-            Añadir productos
+        <>
+          <Link className="menu-elemento" to="/mostrar_listas">
+            Listas
           </Link>
+        </>
       )}
     </nav>
   );

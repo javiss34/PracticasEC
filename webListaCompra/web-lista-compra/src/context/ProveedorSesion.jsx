@@ -102,7 +102,6 @@ const ProveedorSesion = ({ children }) => {
           navegar("/iniciar_sesion");
           setSesionIniciada(false);
         }
-
       }
     )
   },[]);

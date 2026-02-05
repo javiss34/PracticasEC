@@ -4,11 +4,13 @@ import useSesion from "../hooks/useSesion.js";
 import "./listarProductos.css";
 import Producto from "./Producto.jsx";
 import { formatearPrecio } from "../library/formato.js";
+import { useNavigate } from "react-router-dom";
 
 const ListarProductos = () => {
   const { productos, filtro, actualizarFiltro, actualizarOrden } =
     useProductos();
   const { sesionIniciada } = useSesion();
+  const navegar = useNavigate();
 
   const calcularPrecioMedio = () => {
     const numProductos = productos.length;
@@ -25,6 +27,11 @@ const ListarProductos = () => {
   return (
     <div className="contenedor_listado">
       <h2>Productos</h2>
+      {sesionIniciada && (
+        <input type="button" value="Insertar nuevos productos" className="boton_añadir" onClick={()=>{
+          navegar("/insertar_productos");
+        }}/>
+      )}
       {sesionIniciada && (
         <>
           <div className="filtro">

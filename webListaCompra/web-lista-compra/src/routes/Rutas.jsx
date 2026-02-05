@@ -6,6 +6,8 @@ import Inicio from "../pages/Inicio.jsx";
 import Listado from "../pages/Listado.jsx";
 import InsertarProductos from '../pages/InsertarProductos.jsx'
 import ActualizarProducto from "../pages/ActualizarProducto.jsx";
+import InsertarListas from "../pages/InsertarListas.jsx";
+import MostrarListas from "../components/MostrarListas.jsx";
 
 const Rutas = () => {
   return (
@@ -14,9 +16,13 @@ const Rutas = () => {
         <Route path="/" element={<Inicio/>}/>
         <Route path="/iniciar_sesion" element={<InicioSesion />}/>
         <Route path="/registrarse" element={<Registro/>}/>
+
         <Route path="/listado" element={<Listado/>}/>
         <Route path="/insertar_productos" element={<InsertarProductos/>}/>
         <Route path="/listado/editar/:id" element={<ActualizarProducto/>}/>
+
+        <Route path="/insertar_lista" element={<InsertarListas/>}/>
+        <Route path="/mostrar_listas" element={<MostrarListas/>}/>
       </Routes>
     </>
   );
