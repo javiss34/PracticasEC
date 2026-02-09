@@ -95,7 +95,6 @@ const ProveedorSesion = ({ children }) => {
       (event, session) => {
         if(session){
           setDatosUsuario(session.user);
-          navegar("/listado");
           setSesionIniciada(true);
         }else{
           setDatosUsuario(datosusuarioInicial);

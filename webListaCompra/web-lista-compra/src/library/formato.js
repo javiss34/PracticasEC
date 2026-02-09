@@ -17,14 +17,15 @@ export const formatearPeso = (valor) => {
   if (valor === undefined || valor === null || isNaN(valor)) {
     return "0,00";
   }
-  return Number(valor).toLocaleString("es-ES", {
+  const pesoEnKg = Number(valor)/1000;
+  return pesoEnKg.toLocaleString("es-ES", {
     minimumFractionDigits: 0,
     maximumFractionDigits: 2,
   });
 };
 
 export const formatearFecha = () => {
-  return new Date().toISOString("es-ES", {
+  return new Date().toLocaleDateString("es-ES", {
     day: "2-digit",
     month: "2-digit",
     year: "numeric",

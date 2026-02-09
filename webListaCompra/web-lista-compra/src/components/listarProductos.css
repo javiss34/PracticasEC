@@ -1,20 +1,14 @@
-/* --- Contenedor Principal (Igualando estilos de inicio) --- */
+/* --- Contenedor Principal --- */
 .contenedor_listado {
-  max-width: 1200px; /* Un poco más ancho que inicio para que quepan productos */
-  margin: 0 auto;    /* Centrado horizontal */
-  
-  /* ESTA ES LA CLAVE PARA BAJARLO DEL HEADER */
-  margin-top: -180px;  
-  
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: -180px; /* CLAVE PARA BAJARLO DEL HEADER */
   padding: 40px 20px;
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-  color: white; /* Texto blanco igual que inicio */
-  
-  /* Animación de entrada igual que en inicio */
+  color: white;
   animation: fadeIn 1s ease-in-out;
 }
 
-/* Asegúrate de tener el keyframes definido si no es global */
 @keyframes fadeIn {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -23,17 +17,14 @@
 .contenedor_listado > h2 {
   text-align: center;
   margin-bottom: 40px;
-  font-size: 3.5rem; /* Igualando el tamaño de .titulo-principal */
+  font-size: 3.5rem;
   font-weight: 700;
-  /* El gradiente azul bonito de tu inicio para el título */
   background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
-/* --- Mantenemos los estilos de Filtros y Grid que ya funcionaban bien --- */
-
-/* Filtros */
+/* --- Filtros --- */
 .filtro, 
 .contenedor_listado > div:nth-child(3) {
   display: flex;
@@ -42,7 +33,7 @@
   align-items: center;
   justify-content: center;
   margin-bottom: 30px;
-  background-color: #2a2a2a; /* Fondo oscuro igual que tus .feature-card */
+  background-color: #2a2a2a;
   padding: 20px;
   border-radius: 12px;
   border: 1px solid rgba(255, 255, 255, 0.05);
@@ -55,7 +46,7 @@
   color: #cccccc;
 }
 
-/* Grid de Productos */
+/* --- Grid de Productos (ESTO MANTIENE EL ORDEN) --- */
 .lista_productos {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
@@ -63,76 +54,7 @@
   margin-top: 40px;
 }
 
-.botones_producto{
-  display: block;
-}
-
-.boton_borrar{
-  width: 30px;
-  align-self: center;
-  cursor: pointer;
-  margin-left: 20px;
-}
-
-.boton_editar{
-  width: 35px;
-  align-self: center;
-  cursor: pointer;
-  margin-right: 20px;
-}
-
-/* Tarjeta de Producto (Estilo adaptado a tus .feature-card) */
-.producto {
-  background-color: #2a2a2a; /* Mismo gris oscuro que inicio */
-  padding: 20px;
-  border-radius: 12px;
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-  transition: transform 0.3s, border-color 0.3s;
-  display: flex;
-  flex-direction: column;
-  overflow: hidden;
-}
-
-
-
-.producto:hover {
-  transform: translateY(-5px);
-  border-color: #007bff; /* Borde azul al pasar el ratón, igual que inicio */
-}
-
-.producto h2 {
-  font-size: 1.5rem;
-  margin-bottom: 10px;
-  color: white;
-}
-
-.producto h4 {
-  margin: 5px 0;
-  color: #aaa;
-}
-
-.producto h4:nth-of-type(2) {
-  color: #00d2ff; /* Precio en azul cian */
-  font-weight: bold;
-  font-size: 1.2rem;
-}
-
-.imagen_producto {
-  width: 100%;
-  height: 200px;
-  object-fit: cover;
-  border-radius: 8px;
-  margin: 15px 0;
-  background-color: #333;
-}
-
-.producto p {
-  color: #cccccc;
-  font-size: 0.95rem;
-  line-height: 1.5;
-}
-
+/* --- Mensaje Sin Productos --- */
 .sin_productos {
   grid-column: 1 / -1; 
   width: 100%;
@@ -148,6 +70,7 @@
   letter-spacing: 0.5px;
 }
 
+/* --- Cuadro Resumen --- */
 .cuadro_resumen {
   margin-top: 50px;
   padding: 30px;
@@ -157,7 +80,6 @@
   box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3);
   border-top: 3px solid #007bff; 
 }
-
 
 .cuadro_resumen ul {
   list-style: none;
@@ -169,7 +91,6 @@
   flex-wrap: wrap;
   gap: 40px; 
 }
-
 
 .cuadro_resumen li {
   font-size: 1.2rem;
@@ -190,7 +111,7 @@
   box-shadow: 0 0 10px rgba(0, 210, 255, 0.5); 
 }
 
-/* --- Botón Guardar (Estilo llamativo) --- */
+/* --- Botón Añadir (Se usa en el listado) --- */
 .boton_añadir {
   margin-top: 20px;
   padding: 15px;
@@ -206,7 +127,6 @@
   text-transform: uppercase;
   letter-spacing: 1px;
   margin-bottom: 50px ;
-  margin-top: -10px;
 }
 
 .boton_añadir:hover {

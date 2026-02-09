@@ -22,7 +22,8 @@ const ProveedorProductos = ({ children }) => {
   const [filtro, setFiltro] = useState(filtroIncial);
   const [orden, setOrden] = useState(ordenInicial);
 
-  const { ejecutar,insertar,eliminar,editar, cargando, error } = useSupabase();
+  const { ejecutar, insertar, obtener, eliminar, editar, cargando, error } =
+    useSupabase();
 
   /* Como hay varias posibilidades de filtros y de ordenaciones, he pensado que lo mejor es generar una función para crear
     la consulta según el filtro y otra para ordenar según la columna y si quiere ascendente o descendente. Y luego la función listarProductos,
@@ -42,36 +43,37 @@ const ProveedorProductos = ({ children }) => {
   };
 
   const consultaOrden = (consulta, ordenActual) => {
-    return consulta.order(ordenActual.tipo, { ascending: ordenActual.asc });//ascending pertenece a supabase y sirve para indicar si es asc o desc.
+    return consulta.order(ordenActual.tipo, { ascending: ordenActual.asc }); //ascending pertenece a supabase y sirve para indicar si es asc o desc.
   };
 
   const listarProductos = async () => {
     //Aquí no hace falta hacer try catch para capturtar errores porque ya lo hace ejecutar().
-      let consulta = supabaseConexion.from("productos").select("*");
-      consulta = consultaFiltro(consulta, filtro);
-      consulta = consultaOrden(consulta, orden);
-      const resultado = await ejecutar(consulta);
-      if (resultado) {
-        setProductos(resultado);
-      }
+    let consulta = obtener("productos");
+    consulta = consultaFiltro(consulta, filtro);
+    consulta = consultaOrden(consulta, orden);
+    const resultado = await ejecutar(consulta);
+    if (resultado) {
+      setProductos(resultado);
+    }
   };
 
-  const insertarProductos = async(nuevoProducto) => {
-    const resultado = await insertar("productos",nuevoProducto);
-    if(resultado){
-      listarProductos();
-    }
-  }
+  const insertarProductos = async (nuevoProducto) => {
+    const consulta = insertar("productos", nuevoProducto).select();
+    await ejecutar(consulta);
+    listarProductos();
+  };
 
-  const eliminarProducto = async(id) => {
-    await eliminar("productos",id);
-      listarProductos();
-  }
+  const eliminarProducto = async (id) => {
+    const consulta = eliminar("productos", id);
+    await ejecutar(consulta);
+    listarProductos();
+  };
 
-  const editarProducto = async(productoActualizado) => {
-      await editar("productos",productoActualizado);
-      listarProductos();
-  }
+  const editarProducto = async (productoActualizado) => {
+    const consulta = editar("productos", productoActualizado);
+    await ejecutar(consulta);
+    listarProductos();
+  };
 
   const actualizarFiltro = (e) => {
     const { name, value } = e.target;
@@ -100,7 +102,7 @@ const ProveedorProductos = ({ children }) => {
     insertarProductos,
     actualizarOrden,
     eliminarProducto,
-    editarProducto
+    editarProducto,
   };
 
   return (

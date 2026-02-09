@@ -24,17 +24,24 @@ const useSupabase = () => {
     }
   };
 
+
+  /* En prácticas anteriores ejecutaba la sentencia en estas funciones, pero
+  me he dado cuenta que es mucho más reutilizable que estas funciones devuelvan, 
+  simplemente la consulta, de esta forma, si la consulta es más compleja
+  se le puede añadir al llamar a cualquiera de esta función y ya ejecutarla
+  en el proveedor
+  */
   const obtener = (tabla) => {
-    return ejecutar(supabaseConexion.from(tabla).select("*"));
+    return supabaseConexion.from(tabla).select("*");
   }
   const insertar = (tabla,datos) => {
-    return ejecutar(supabaseConexion.from(tabla).insert(datos).select());
+    return supabaseConexion.from(tabla).insert(datos);
   }
   const eliminar = (tabla,id) => {
-    return ejecutar(supabaseConexion.from(tabla).delete().eq("id",id))
+    return supabaseConexion.from(tabla).delete().eq("id",id);
   }
   const editar = (tabla,datos) => {
-    return ejecutar(supabaseConexion.from(tabla).update(datos).eq("id",datos.id));
+    return supabaseConexion.from(tabla).update(datos).eq("id",datos.id);
   }
 
   return {

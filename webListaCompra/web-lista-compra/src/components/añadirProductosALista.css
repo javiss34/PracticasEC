@@ -1,0 +1,93 @@
+/* --- Contenedor Principal --- */
+.panel_anadir {
+    max-width: 1200px;
+    margin: 0 auto;
+    margin-top: 150px; /* Espacio para el header */
+    padding: 20px;
+    
+    /* DEFINICIÓN DEL GRID */
+    display: grid;
+    /* Tarjetas más estrechas: minmax(200px, 1fr) */
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 20px;
+
+    /* --- ANIMACIÓN DE ENTRADA (AÑADIDA) --- */
+    animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Definición de la animación */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* El título debe ocupar todo el ancho */
+.panel_anadir h3 {
+    grid-column: 1 / -1;
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 30px;
+    background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+/* --- REDUCCIÓN DE TAMAÑO DE LAS TARJETAS --- */
+/* Sobrescribimos estilos solo dentro de este panel */
+
+.panel_anadir .producto {
+    padding: 15px; 
+    min-height: 350px;
+}
+
+.panel_anadir .producto h2 {
+    font-size: 1.1rem; 
+}
+
+.panel_anadir .producto h4 {
+    font-size: 0.9rem; 
+}
+
+.panel_anadir .imagen_producto {
+    height: 120px; /* Imagen más pequeña */
+    margin: 10px 0;
+}
+
+.panel_anadir .producto p {
+    font-size: 0.85rem;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 3; /* Corta el texto si es muy largo */
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+/* Ajuste del botón para que quepa bien en la tarjeta pequeña */
+.panel_anadir .boton_añadir {
+    font-size: 0.8rem;
+    padding: 8px 5px;
+    margin-top: 10px;
+    white-space: nowrap;      /* Evita que el texto salte de línea si es posible */
+    overflow: hidden;         /* Oculta si se desborda */
+    text-overflow: ellipsis;  /* Pone ... si es muy largo */
+}
+/* ... tus estilos anteriores ... */
+
+.mensaje_exito {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    background-color: #28a745; /* Verde éxito */
+    color: white;
+    padding: 15px 25px;
+    border-radius: 8px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    font-weight: 600;
+    z-index: 1000; /* Para que salga por encima de todo */
+    animation: slideIn 0.5s ease-out;
+}
+
+@keyframes slideIn {
+    from { transform: translateX(100%); opacity: 0; }
+    to { transform: translateX(0); opacity: 1; }
+}

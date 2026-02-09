@@ -23,7 +23,7 @@ const MostrarListas = () => {
                     <Lista lista={lista} key={lista.id}/>
                 ))
             ): (
-                <h2>No hay nunguna lista creada</h2>
+                <h2 className='lista_vacia'>No hay nunguna lista creada</h2>
             )}
         </div>
     </div>

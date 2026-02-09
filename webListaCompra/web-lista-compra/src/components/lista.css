@@ -1,0 +1,75 @@
+/* --- Tarjeta de Lista (Versión Compacta) --- */
+.card-lista {
+  background-color: #2a2a2a;
+  border-radius: 10px;
+  padding: 35px; 
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;   
+  transition: transform 0.2s ease, border-color 0.2s ease;
+  height: auto; /* Importante: que la altura se ajuste al contenido, no estire */
+}
+
+/* Efecto Hover */
+.card-lista:hover {
+  transform: translateY(-3px);
+  border-color: #007bff;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Título de la Lista --- */
+.card-lista h2 {
+  /* Quitamos todos los márgenes extra */
+  margin: 0;
+  /* Tamaño más contenido */
+  font-size: 1.5rem;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
+  
+  /* Si el nombre es largo, que no rompa el diseño */
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  
+  /* Un pequeño borde abajo para separar visualmente del botón sin usar mucho espacio */
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* --- Botones --- */
+.card-lista input[type="button"] {
+  width: 100%;
+  padding: 10px; /* Botones un poco más finos */
+  border-radius: 6px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: filter 0.2s;
+  border: none;
+}
+
+/* Botón Añadir (Azul intenso) */
+.card-lista input[type="button"]:nth-of-type(1) {
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  color: white;
+}
+
+.card-lista input[type="button"]:nth-of-type(1):hover {
+  filter: brightness(1.1);
+}
+
+/* Botón Detalles (Gris oscuro/Sutil) */
+.card-lista input[type="button"]:nth-of-type(2) {
+  background-color: rgba(255, 255, 255, 0.05);
+  color: #ccc;
+  border: 1px solid transparent;
+}
+
+.card-lista input[type="button"]:nth-of-type(2):hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  color: white;
+  border-color: #555;
+}

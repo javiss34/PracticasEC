@@ -1,0 +1,137 @@
+/* --- Contenedor Principal --- */
+.detalles_lista {
+  max-width: 900px; /* Un poco más estrecho para facilitar la lectura de lista */
+  margin: 0 auto;
+  margin-top: 150px; /* Espacio para el header fijo */
+  padding: 20px;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  color: white;
+  animation: fadeIn 0.8s ease-in-out;
+  min-height: 60vh;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Título Principal --- */
+.detalles_lista > h2 {
+  text-align: center;
+  font-size: 2.5rem;
+  margin-bottom: 40px;
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  font-weight: 800;
+}
+
+/* --- Estilo de cada Elemento (Fila) de la lista --- */
+.productos_lista_card {
+  background-color: #2a2a2a;
+  margin-bottom: 15px;
+  padding: 20px 25px;
+  border-radius: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  display: flex;
+  justify-content: space-between; /* Prepara para cuando añadas cantidad/precio a la derecha */
+  align-items: center;
+  transition: all 0.3s ease;
+}
+
+.productos_lista_card:hover {
+  background-color: #333;
+  transform: translateX(10px); /* Efecto de desplazamiento lateral al pasar el mouse */
+  border-left: 5px solid #00d2ff; /* Indicador visual bonito a la izquierda */
+  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+}
+
+.productos_lista_card h3 {
+  margin: 0;
+  font-size: 1.3rem;
+  color: #f0f0f0;
+  font-weight: 500;
+}
+
+/* Mensaje cuando no hay productos */
+.detalles_lista > h3 {
+  text-align: center;
+  color: #888;
+  font-style: italic;
+  margin: 40px 0;
+  padding: 40px;
+  border: 2px dashed #444;
+  border-radius: 10px;
+}
+
+/* --- Panel de Información Adicional (Resumen) --- */
+.Información_adicional {
+  margin-top: 60px;
+  background: linear-gradient(145deg, #2a2a2a, #222);
+  padding: 30px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Barra decorativa superior en el panel */
+.Información_adicional::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(90deg, #007bff, #00d2ff);
+}
+
+.Información_adicional h2 {
+  font-size: 1.8rem;
+  margin-bottom: 25px;
+  color: white;
+  border-bottom: 1px solid #444;
+  padding-bottom: 10px;
+}
+
+.Información_adicional h3 {
+  font-size: 1.1rem;
+  margin: 15px 0;
+  color: #bbb;
+  display: flex;
+  justify-content: space-between; /* Pone la etiqueta a la izq y el valor a la der si lo separas en spans */
+  align-items: center;
+}
+
+/* Resaltar los valores numéricos dentro de los h3 */
+/* Nota: Como en tu HTML el texto está junto, esto afectará a toda la línea, 
+   pero se verá bien limpio. */
+
+/* --- Estilo para la advertencia de peso (Coche) --- */
+.Información_adicional p {
+  margin-top: 20px;
+  padding: 15px;
+  background-color: rgba(255, 193, 7, 0.1); /* Fondo amarillo transparente */
+  border-left: 4px solid #ffc107; /* Borde amarillo */
+  color: #ffc107;
+  font-weight: bold;
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  animation: pulse 2s infinite;
+}
+
+/* Icono simulado para la advertencia */
+.Información_adicional p::before {
+  content: '⚠️'; 
+  font-size: 1.2rem;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.8; }
+  50% { opacity: 1; }
+  100% { opacity: 0.8; }
+}
