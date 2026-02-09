@@ -128,3 +128,53 @@
 .boton_redireccionar:active {
     transform: translateY(1px);
 }
+
+
+/* --- Mensaje de Cargando Inserción --- */
+.mensaje_cargar {
+  /* Ocupar todo el ancho del grid */
+  grid-column: 1 / -1; 
+  
+  /* Centrado total */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 300px; /* Altura mínima para que no de "saltos" la pantalla */
+  
+  /* Estilo del texto */
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #00d2ff; /* Color Cian */
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  
+  /* Animación suave de aparición */
+  animation: fadeIn 0.5s ease-in-out;
+}
+
+/* --- Spinner (Círculo giratorio) --- */
+.mensaje_cargar::after {
+  content: '';
+  display: block;
+  width: 50px;
+  height: 50px;
+  margin-top: 20px;
+  
+  /* Creamos el anillo */
+  border: 5px solid rgba(255, 255, 255, 0.1);
+  border-left-color: #00d2ff; /* La parte que gira es Cian */
+  border-radius: 50%;
+  
+  /* Animación de giro */
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

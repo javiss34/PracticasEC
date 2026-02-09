@@ -80,6 +80,16 @@ const ProveedorListas = ({ children }) => {
 
 
   useEffect(() => {
+    supabaseConexion.auth.onAuthStateChange(
+      (event,session)=>{
+        if(event==="INITIAL_SESSION"){
+          traerListas()
+        }
+        if(event==="SIGNED_OUT"){
+          setListas([]);
+        }
+      }
+    )
     traerListas();
   }, []);
 

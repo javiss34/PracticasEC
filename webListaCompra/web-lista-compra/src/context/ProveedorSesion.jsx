@@ -20,6 +20,7 @@ const ProveedorSesion = ({ children }) => {
   const [mensajeUsuario, setMensajeUsuario] = useState(mensajeUsuarioInicial);
   const [sesionIniciada, setSesionIniciada] = useState(sesionIniciadaInicial);
 
+
   const navegar = useNavigate();
 
   const actualizarDato = (e) => {
@@ -90,13 +91,13 @@ const ProveedorSesion = ({ children }) => {
     }
   };
 
-  useEffect(() => {
+  const comprobarAutenticacion = () => {
     const suscripcion = supabaseConexion.auth.onAuthStateChange(
       (event, session) => {
         if(session){
-          setDatosUsuario(session.user);
-          navegar("/");
-          setSesionIniciada(true);
+            setDatosUsuario(session.user);
+            navegar("/");
+            setSesionIniciada(true);
         }else{
           setDatosUsuario(datosusuarioInicial);
           navegar("/iniciar_sesion");
@@ -104,6 +105,11 @@ const ProveedorSesion = ({ children }) => {
         }
       }
     )
+
+  }
+
+  useEffect(() => {
+    comprobarAutenticacion()
   },[]);
 
   const datosAProveer = {
