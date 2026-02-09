@@ -1,6 +1,6 @@
 /* --- Contenedor Principal --- */
 .detalles_lista {
-  max-width: 900px; /* Un poco más estrecho para facilitar la lectura de lista */
+  max-width: 900px;
   margin: 0 auto;
   margin-top: 150px; /* Espacio para el header fijo */
   padding: 20px;
@@ -8,6 +8,7 @@
   color: white;
   animation: fadeIn 0.8s ease-in-out;
   min-height: 60vh;
+  padding-bottom: 80px; /* Espacio extra abajo para que no se pegue el botón borrar al borde */
 }
 
 @keyframes fadeIn {
@@ -26,35 +27,68 @@
   font-weight: 800;
 }
 
-/* --- Estilo de cada Elemento (Fila) de la lista --- */
+/* --- Tarjeta de Producto (Fila) --- */
 .productos_lista_card {
   background-color: #2a2a2a;
   margin-bottom: 15px;
-  padding: 20px 25px;
+  padding: 15px 25px;
   border-radius: 10px;
   border: 1px solid rgba(255, 255, 255, 0.05);
   box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+  
   display: flex;
-  justify-content: space-between; /* Prepara para cuando añadas cantidad/precio a la derecha */
+  justify-content: space-between; /* Texto a la izq, botón a la derecha */
   align-items: center;
+  gap: 20px; /* Espacio entre el nombre y el botón */
+  
   transition: all 0.3s ease;
 }
 
 .productos_lista_card:hover {
   background-color: #333;
-  transform: translateX(10px); /* Efecto de desplazamiento lateral al pasar el mouse */
-  border-left: 5px solid #00d2ff; /* Indicador visual bonito a la izquierda */
-  box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+  transform: translateX(5px);
+  border-left: 5px solid #00d2ff;
 }
 
+/* Nombre del producto */
 .productos_lista_card h3 {
   margin: 0;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
   color: #f0f0f0;
   font-weight: 500;
+  display: flex;
+  align-items: center;
 }
 
-/* Mensaje cuando no hay productos */
+/* Estilo para la Cantidad (x2, x3...) */
+.productos_lista_card h3 strong {
+  color: #00d2ff; /* Color cian para destacar */
+  font-size: 0.9em;
+  margin-left: 10px;
+  background-color: rgba(0, 210, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+}
+
+/* Botón "Eliminar Producto" (Pequeño y rojo) */
+.productos_lista_card input[type="button"] {
+  background-color: transparent;
+  border: 1px solid #dc3545; /* Borde rojo */
+  color: #dc3545;
+  padding: 8px 15px;
+  border-radius: 6px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+}
+
+.productos_lista_card input[type="button"]:hover {
+  background-color: #dc3545;
+  color: white;
+}
+
+/* --- Mensaje "No hay productos" --- */
 .detalles_lista > h3 {
   text-align: center;
   color: #888;
@@ -65,7 +99,7 @@
   border-radius: 10px;
 }
 
-/* --- Panel de Información Adicional (Resumen) --- */
+/* --- Panel de Información Adicional --- */
 .Información_adicional {
   margin-top: 60px;
   background: linear-gradient(145deg, #2a2a2a, #222);
@@ -77,7 +111,6 @@
   overflow: hidden;
 }
 
-/* Barra decorativa superior en el panel */
 .Información_adicional::before {
   content: '';
   position: absolute;
@@ -100,21 +133,14 @@
   font-size: 1.1rem;
   margin: 15px 0;
   color: #bbb;
-  display: flex;
-  justify-content: space-between; /* Pone la etiqueta a la izq y el valor a la der si lo separas en spans */
-  align-items: center;
 }
 
-/* Resaltar los valores numéricos dentro de los h3 */
-/* Nota: Como en tu HTML el texto está junto, esto afectará a toda la línea, 
-   pero se verá bien limpio. */
-
-/* --- Estilo para la advertencia de peso (Coche) --- */
+/* Alerta de Coche */
 .Información_adicional p {
   margin-top: 20px;
   padding: 15px;
-  background-color: rgba(255, 193, 7, 0.1); /* Fondo amarillo transparente */
-  border-left: 4px solid #ffc107; /* Borde amarillo */
+  background-color: rgba(255, 193, 7, 0.1);
+  border-left: 4px solid #ffc107;
   color: #ffc107;
   font-weight: bold;
   border-radius: 4px;
@@ -124,14 +150,82 @@
   animation: pulse 2s infinite;
 }
 
-/* Icono simulado para la advertencia */
 .Información_adicional p::before {
-  content: '⚠️'; 
+  content: '⚠️';
   font-size: 1.2rem;
+}
+
+/* --- Botón "Eliminar Lista" (Grande y Rojo al final) --- */
+.boton_borrar_lista {
+  margin-top: 50px;
+  display: flex;
+  justify-content: center;
+}
+
+.boton_borrar_lista input[type="button"] {
+  background-color: #dc3545; /* Rojo peligro */
+  color: white;
+  border: none;
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  border-radius: 50px; /* Redondeado */
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4);
+  transition: transform 0.2s, background-color 0.2s;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.boton_borrar_lista input[type="button"]:hover {
+  background-color: #c82333; /* Rojo más oscuro */
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(220, 53, 69, 0.6);
+}
+
+.boton_borrar_lista input[type="button"]:active {
+  transform: translateY(1px);
 }
 
 @keyframes pulse {
   0% { opacity: 0.8; }
   50% { opacity: 1; }
   100% { opacity: 0.8; }
+}
+
+/* --- Botón "Ver Listas" (Redirección) --- */
+.boton_redireccion {
+  margin-top: 40px; /* Separación del panel de información */
+  margin-bottom: 20px; /* Separación del botón de borrar */
+  display: flex;
+  justify-content: center;
+}
+
+.boton_redireccion input[type="button"] {
+  /* Estilo Azul/Cian (Marca de la casa) */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  color: white;
+  border: none;
+  
+  /* Forma y tamaño */
+  padding: 12px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px; /* Redondeado tipo píldora */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.2s ease;
+}
+
+.boton_redireccion input[type="button"]:hover {
+  transform: translateY(-3px); /* Se eleva un poco */
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.5);
+  filter: brightness(1.1); /* Brilla un poco más */
+}
+
+.boton_redireccion input[type="button"]:active {
+  transform: translateY(1px); /* Efecto de pulsado */
 }

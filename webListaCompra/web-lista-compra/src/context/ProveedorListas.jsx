@@ -72,11 +72,12 @@ const ProveedorListas = ({ children }) => {
     traerListas();
   };
 
-  const editarLista = async(id_lista,datos) => {
+  const editarLista = async(id,datos) => {
     const consulta = editar("lista_productos",datos);
     await ejecutar(consulta);
     traerListas();
   }
+
 
   useEffect(() => {
     traerListas();
@@ -89,9 +90,9 @@ const ProveedorListas = ({ children }) => {
     cargando,
     insertarProductosEnLista,
     eliminarProductoDeLista,
-    obtenerDetallesLista,
     borrarLista,
-    editarLista
+    editarLista,
+    obtenerDetallesLista
   };
 
   return (

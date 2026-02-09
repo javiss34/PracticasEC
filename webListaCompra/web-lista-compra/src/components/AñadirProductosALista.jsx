@@ -2,7 +2,7 @@ import React, { use, useEffect, useState } from 'react'
 import useListas from '../hooks/useListas.js'
 import useProductos from '../hooks/useProductos.js'
 import Producto from './Producto.jsx'
-import { useParams } from 'react-router-dom'
+import { useNavigate, useParams } from 'react-router-dom'
 import './añadirProductosALista.css';
 
 const AñadirProductosALista = () => {
@@ -10,6 +10,7 @@ const AñadirProductosALista = () => {
     const {productos,listarProductos} = useProductos();
     const {insertarProductosEnLista} = useListas();
     const [productoIntroducido,setProductoIntroducido] = useState(false);
+    const navegar = useNavigate();
 
     useEffect(()=>{
         if(!productos){
@@ -36,6 +37,9 @@ const AñadirProductosALista = () => {
                 Producto añadido correctamente
             </div>
         )}
+        <div>
+            <input type="button" className='boton_redireccionar' value="Volver" onClick={() => {navegar("/mostrar_listas")}}/>
+        </div>
     </div>
   )
 }

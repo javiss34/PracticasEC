@@ -1,0 +1,112 @@
+/* --- Contenedor del Formulario (Tarjeta Central) --- */
+.contenedor_formulario {
+  max-width: 500px;
+  margin: 0 auto;
+  margin-top: 150px; /* Espacio para bajarlo del header fijo */
+  padding: 40px;
+  
+  background-color: #2a2a2a; /* Fondo gris oscuro */
+  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5); /* Sombra elegante */
+  
+  display: flex;
+  flex-direction: column;
+  gap: 20px; /* Espacio vertical entre los elementos (inputs, labels, botones) */
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Etiquetas (Labels) --- */
+.contenedor_formulario label {
+  color: #ffffff;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: -10px; /* Acercar un poco el label al input */
+}
+
+/* --- Input de Texto --- */
+.contenedor_formulario input[type="text"] {
+  background-color: #333; /* Un poco más claro que el fondo */
+  border: 1px solid #555;
+  color: white;
+  padding: 15px;
+  border-radius: 8px;
+  font-size: 1rem;
+  outline: none; /* Quita el borde azul por defecto del navegador */
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+/* Estado Focus (Cuando escribes) */
+.contenedor_formulario input[type="text"]:focus {
+  border-color: #00d2ff; /* Cian */
+  box-shadow: 0 0 8px rgba(0, 210, 255, 0.3);
+}
+
+/* Estado de Error (Clase .error que pones en el JSX) */
+.contenedor_formulario input[type="text"].error {
+  border-color: #dc3545; /* Rojo */
+  background-color: rgba(220, 53, 69, 0.05);
+}
+
+/* --- Botón Guardar Lista (Principal) --- */
+.boton_enviar {
+  margin-top: 10px;
+  padding: 15px;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  cursor: pointer;
+  border: none;
+  border-radius: 8px;
+  
+  /* Gradiente Azul/Cian marca de la casa */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.4);
+  transition: transform 0.2s, box-shadow 0.2s, filter 0.2s;
+}
+
+.boton_enviar:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(0, 123, 255, 0.6);
+  filter: brightness(1.1);
+}
+
+.boton_enviar:active {
+  transform: translateY(1px);
+}
+
+/* --- Botón Ver Listas (Secundario) --- */
+.boton_redireccionar {
+  background-color: transparent;
+  border: 2px solid #444;
+  color: #ccc;
+  padding: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.boton_redireccionar:hover {
+  border-color: #aaa;
+  color: white;
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+/* --- Contenedor de Errores (Debajo del formulario) --- */
+/* Ajustamos el div que envuelve a MostrarError para que no quede pegado */
+.contenedor_formulario + div {
+  max-width: 500px;
+  margin: 20px auto;
+  text-align: center;
+}

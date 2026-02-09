@@ -131,7 +131,15 @@ const DetallesLista = () => {
           </p>
         )}
       </div>
-
+      <div className="boton_redireccion">
+        <input
+          type="button"
+          value="Volver"
+          onClick={() => {
+            navegar("/mostrar_listas");
+          }}
+        />
+      </div>
       <div className="boton_borrar_lista">
         <input
           type="button"

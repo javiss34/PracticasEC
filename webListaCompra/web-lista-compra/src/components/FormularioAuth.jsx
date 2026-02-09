@@ -14,7 +14,6 @@ const FormularioAuth = ({ registro }) => {
     iniciarSesion,
     sesionIniciada,
   } = useSesion();
-
   /* Esta función sirve para hacer un registro o un inicio de sesión en la base de datos
   dependiendo de que se le haya pasado por props. */
   const elegirAccion = () => {

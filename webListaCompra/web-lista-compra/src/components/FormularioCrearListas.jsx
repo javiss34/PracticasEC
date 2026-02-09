@@ -2,7 +2,9 @@ import React, { act, useState } from "react";
 import { validarString } from "../library/validaciones.js";
 import useListas from "../hooks/useListas.js";
 import useSesion from "../hooks/useSesion";
-import MostrarError from '../components/errores/MostrarError.jsx';
+import MostrarError from "../components/errores/MostrarError.jsx";
+import { useNavigate } from "react-router-dom";
+import "./formularioCrearListas.css";
 
 const FormularioCrearListas = () => {
   const listaInicial = {
@@ -12,7 +14,8 @@ const FormularioCrearListas = () => {
   const [objetoErrores, setObjetoErrores] = useState({});
   const [listaErrores, setListaErrores] = useState([]);
   const { crearLista } = useListas();
-  const {datosUsuario} = useSesion();
+  const { datosUsuario } = useSesion();
+  const navegar = useNavigate();
 
   const actualizarDato = (e) => {
     const { name, value } = e.target;
@@ -24,8 +27,8 @@ const FormularioCrearListas = () => {
   };
 
   const validarDato = (name, value) => {
-    if(name === "nombre"){
-      return validarString(name,value);
+    if (name === "nombre") {
+      return validarString(name, value);
     }
   };
 
@@ -47,11 +50,10 @@ const FormularioCrearListas = () => {
     if (formularioValido) {
       try {
         const listaAInsertar = {
-            nombre_lista: lista.nombre,
-            fecha_creacion: new Date().toISOString(),
-            propietario_id: datosUsuario.id
-        }
-        console.log(listaAInsertar)
+          nombre_lista: lista.nombre,
+          fecha_creacion: new Date().toISOString(),
+          propietario_id: datosUsuario.id,
+        };
         await crearLista(listaAInsertar);
         setLista(listaInicial);
         setListaErrores([]);
@@ -63,23 +65,38 @@ const FormularioCrearListas = () => {
 
   return (
     <>
-    <div className="contenedor_formulario">
-      <label htmlFor="nombre">Nombre de la lista:</label>
-      <input
-        type="text"
-        id="nombre"
-        name="nombre"
-        className={objetoErrores.nombre ? "error" : ""}
-        value={lista.nombre}
-        onChange={(e) => {
-          actualizarDato(e);
-        }}
-      />
-      <input type="button" className="boton_enviar" value="Guardar Lista" onClick={(e) => {validarFormulario(e)}}/>
-    </div>
-    <div>
-        <MostrarError errores={listaErrores}/>
-    </div>
+      <div className="contenedor_formulario">
+        <label htmlFor="nombre">Nombre de la lista:</label>
+        <input
+          type="text"
+          id="nombre"
+          name="nombre"
+          className={objetoErrores.nombre ? "error" : ""}
+          value={lista.nombre}
+          onChange={(e) => {
+            actualizarDato(e);
+          }}
+        />
+        <input
+          type="button"
+          className="boton_enviar"
+          value="Guardar Lista"
+          onClick={(e) => {
+            validarFormulario(e);
+          }}
+        />
+        <input
+          type="button"
+          className="boton_redireccionar"
+          value="Ver listas"
+          onClick={() => {
+            navegar("/mostrar_listas");
+          }}
+        />
+      </div>
+      <div>
+        <MostrarError errores={listaErrores} />
+      </div>
     </>
   );
 };
