@@ -27,6 +27,8 @@ const DetallesLista = () => {
     useState(false);
   const [confirmacionBorrarLista, setConfirmacionBorrarLista] = useState(false);
 
+  /* De esta forma cargamos en listaActual la lista de la que queremos los detalles.
+  Y también cargamos los productos de la propia lista. */
   const cargarDatos = async () => {
     if (listas) {
       const listaEncontrada = listas.find((l) => l.id === id);
@@ -61,6 +63,7 @@ const DetallesLista = () => {
     return formatearFecha(listaActual.fecha_creacion);
   };
 
+  /* He decidido qye si un producto está repetido varias veces en la lista, que solo muestre el mensaje de confirmación para borrar el último */
   const eliminarProducto = (id_producto, cantidad) => {
     if (cantidad > 1) {
       const cantidadActualizada = cantidad - 1;
@@ -83,6 +86,7 @@ const DetallesLista = () => {
   return (
     <div className="detalles_lista">
       <h2>Detalles de la lista: {listaActual.nombre_lista}</h2>
+      <input type="button" value="Añadir productos" className="boton_insertar" onClick={() => navegar(`/insertar-producto/${id}`)}/>
       {productosLista.length > 0 ? (
         productosLista.map((p) => (
           <>
@@ -125,6 +129,7 @@ const DetallesLista = () => {
         <h3>Precio Total: {formatearPrecio(calcularPrecioTotalLista())}</h3>
         <h3>Peso Total: {formatearPeso(calcularPesoTotalLista())} kg</h3>
         <h3>Fecha de creación: {fechaCreacion()}</h3>
+        {/* He considerado que a partir de 15kg, ya sería necesario el coche */}
         {calcularPesoTotalLista() > 15000 && (
           <p>
             "Tu lista supera los 15kg, por lo que te recomendamos ir en coche"

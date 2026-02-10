@@ -104,19 +104,22 @@
 
 /* --- Estilo del Botón "Volver" --- */
 .boton_redireccionar {
-    /* Estilo "Ghost" (Transparente con borde) para diferenciarlo de las acciones principales */
-    background-color: transparent;
-    border: 2px solid #00d2ff; /* Borde Cian */
-    color: #ffffff;
-    
-    padding: 12px 40px;
-    font-size: 1rem;
-    font-weight: 700;
-    border-radius: 50px; /* Redondeado */
-    cursor: pointer;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-    transition: all 0.3s ease;
+      /* Estilo Azul/Cian (Marca de la casa) */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  color: white;
+  border: none;
+  
+  /* Forma y tamaño */
+  padding: 12px 35px;
+  font-size: 1rem;
+  font-weight: 700;
+  border-radius: 50px; /* Redondeado tipo píldora */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(0, 123, 255, 0.3);
+  transition: all 0.2s ease;
 }
 
 .boton_redireccionar:hover {

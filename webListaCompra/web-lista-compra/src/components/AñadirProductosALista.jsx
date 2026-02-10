@@ -7,22 +7,17 @@ import "./añadirProductosALista.css";
 
 const AñadirProductosALista = () => {
   const { id } = useParams();
-  const { productos, listarProductos } = useProductos();
+  const { productos } = useProductos();
   const { insertarProductosEnLista } = useListas();
   const [productoIntroducido, setProductoIntroducido] = useState(false);
   const [procesandoInsercion, setProcesandoInsercion] = useState(false);
   const navegar = useNavigate();
 
-  useEffect(() => {
-    if (!productos) {
-      listarProductos();
-    }
-  }, []);
-
   const meterProductosEnLista = async (id_producto) => {
     await insertarProductosEnLista(id, id_producto);
     setProcesandoInsercion(false);
     setProductoIntroducido(true);
+    /* Mostramos un mensaje de producto añadido correctamente durante 1s */
     setTimeout(() => {
       setProductoIntroducido(false);
     }, 1000);
@@ -54,9 +49,9 @@ const AñadirProductosALista = () => {
         <input
           type="button"
           className="boton_redireccionar"
-          value="Volver"
+          value="Detalles Lista"
           onClick={() => {
-            navegar("/mostrar_listas");
+            navegar(`/lista-detalles/${id}`);
           }}
         />
       </div>

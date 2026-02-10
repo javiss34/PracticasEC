@@ -20,7 +20,6 @@ const ProveedorSesion = ({ children }) => {
   const [mensajeUsuario, setMensajeUsuario] = useState(mensajeUsuarioInicial);
   const [sesionIniciada, setSesionIniciada] = useState(sesionIniciadaInicial);
 
-
   const navegar = useNavigate();
 
   const actualizarDato = (e) => {
@@ -39,7 +38,7 @@ const ProveedorSesion = ({ children }) => {
           emailRedirectTo: "http://localhost:5173/", //Redirección tras confirmar email
           data: {
             nombre: datosSesion.nombre, //El nombre es un metadato
-          }
+          },
         },
       });
       if (error) {
@@ -94,23 +93,22 @@ const ProveedorSesion = ({ children }) => {
   const comprobarAutenticacion = () => {
     const suscripcion = supabaseConexion.auth.onAuthStateChange(
       (event, session) => {
-        if(session){
-            setDatosUsuario(session.user);
-            navegar("/");
-            setSesionIniciada(true);
-        }else{
+        if (session) {
+          setDatosUsuario(session.user);
+          navegar("/");
+          setSesionIniciada(true);
+        } else {
           setDatosUsuario(datosusuarioInicial);
           navegar("/iniciar_sesion");
           setSesionIniciada(false);
         }
-      }
-    )
-
-  }
+      },
+    );
+  };
 
   useEffect(() => {
-    comprobarAutenticacion()
-  },[]);
+    comprobarAutenticacion();
+  }, []);
 
   const datosAProveer = {
     actualizarDato,
@@ -119,7 +117,7 @@ const ProveedorSesion = ({ children }) => {
     cerrarSesion,
     mensajeUsuario,
     sesionIniciada,
-    datosUsuario
+    datosUsuario,
   };
 
   return (
