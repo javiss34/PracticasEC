@@ -130,6 +130,10 @@ const ProveedorSesion = ({ children }) => {
     comprobarAutenticacion();
   }, []);
 
+  useEffect(() => {
+    console.log(datosUsuario);
+  },[datosUsuario])
+
   const datosAProveer = {
     actualizarDato,
     registrar,

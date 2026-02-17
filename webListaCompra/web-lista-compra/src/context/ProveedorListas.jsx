@@ -81,7 +81,6 @@ const ProveedorListas = ({ children }) => {
     /* He tenido que hacer esto para que al iniciar sesión se traigan las listas correspondientes, sino había que pulsar f5 para que se recargara */
     supabaseConexion.auth.onAuthStateChange(
       (event,session)=>{
-        console.log(event)
         if(event==="INITIAL_SESSION" || event==="SIGNED_IN"){
           traerListas()
         }

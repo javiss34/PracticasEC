@@ -89,8 +89,8 @@ const DetallesLista = () => {
       <input type="button" value="Añadir productos" className="boton_insertar" onClick={() => navegar(`/insertar-producto/${id}`)}/>
       {productosLista.length > 0 ? (
         productosLista.map((p) => (
-          <>
-            <div key={p.id} className="productos_lista_card">
+          <div key={p.id}>
+            <div className="productos_lista_card">
               <h3>
                 {p.productos.nombre}{" "}
                 <strong>{p.cantidad > 1 && `x${p.cantidad}`}</strong>
@@ -118,7 +118,7 @@ const DetallesLista = () => {
                 }}
               />
             </div>
-          </>
+          </div>
         ))
       ) : (
         <h3>No hay productos añadidos a esta lista</h3>
