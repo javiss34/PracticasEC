@@ -30,8 +30,6 @@ const ProveedorListas = ({ children }) => {
       .eq("lista_id", lista_id)
       .eq("producto_id", producto_id)
     const resultados = await ejecutar(consultaABuscar);
-    console.log(resultados);
-    console.log(resultados.length)
     if (resultados.length>0) {
       const resultado = resultados[0];
       //Si hay resultado sumamos uno a la cantidad.

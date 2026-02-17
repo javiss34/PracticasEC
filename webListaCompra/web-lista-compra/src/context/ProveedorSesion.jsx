@@ -2,6 +2,7 @@ import React, { createContext, useEffect, useState } from "react";
 import { supabaseConexion } from "../supabase/supabase.js";
 import { useNavigate } from "react-router-dom";
 import Inicio from "../pages/Inicio.jsx";
+import useSupabase from "../hooks/useSupabase.js";
 
 const ContextoSesion = createContext();
 
@@ -14,11 +15,13 @@ const ProveedorSesion = ({ children }) => {
   const datosusuarioInicial = {};
   const mensajeUsuarioInicial = "";
   const sesionIniciadaInicial = false;
+  const { obtener } = useSupabase();
 
   const [datosSesion, setDatosSesion] = useState(datosSesionInicial);
   const [datosUsuario, setDatosUsuario] = useState(datosusuarioInicial);
   const [mensajeUsuario, setMensajeUsuario] = useState(mensajeUsuarioInicial);
   const [sesionIniciada, setSesionIniciada] = useState(sesionIniciadaInicial);
+  const [esAdmin, setEsAdmin] = useState(false);
 
   const navegar = useNavigate();
 
@@ -26,6 +29,15 @@ const ProveedorSesion = ({ children }) => {
     setMensajeUsuario(mensajeUsuarioInicial); //Así cuando el usuario escriba se va el error
     const { name, value } = e.target;
     setDatosSesion({ ...datosSesion, [name]: value });
+  };
+
+  const obtenerRol = async (idUsuario) => {
+    const resultado = await obtener("roles").eq("id_rol", idUsuario);
+    if (resultado.data.length > 0) {
+      setEsAdmin(resultado.data[0].rol === "admin");
+    } else {
+      setEsAdmin(false);
+    }
   };
 
   const registrar = async () => {
@@ -95,10 +107,17 @@ const ProveedorSesion = ({ children }) => {
       (event, session) => {
         if (session) {
           setDatosUsuario(session.user);
-          navegar("/");
+          obtenerRol(session.user.id);
           setSesionIniciada(true);
+          if (
+            location.pathname === "/iniciar_sesion" ||
+            location.pathname === "/registro"
+          ) {
+            navegar("/");
+          }
         } else {
           setDatosUsuario(datosusuarioInicial);
+          setEsAdmin(false);
           navegar("/iniciar_sesion");
           setSesionIniciada(false);
         }
@@ -118,6 +137,7 @@ const ProveedorSesion = ({ children }) => {
     mensajeUsuario,
     sesionIniciada,
     datosUsuario,
+    esAdmin,
   };
 
   return (
