@@ -109,6 +109,7 @@ const ProveedorSesion = ({ children }) => {
           setDatosUsuario(session.user);
           obtenerRol(session.user.id);
           setSesionIniciada(true);
+          //Es la única forma que he conseguido para que no redireccione siempre al recargar la pagina, cambiar de pestaña,...
           if (
             location.pathname === "/iniciar_sesion" ||
             location.pathname === "/registro"
