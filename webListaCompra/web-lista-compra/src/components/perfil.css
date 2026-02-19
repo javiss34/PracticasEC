@@ -1,0 +1,103 @@
+/* --- Contenedor Principal (Tarjeta de Perfil) --- */
+.perfil {
+  background-color: #2a2a2a;
+  /* Lo he hecho más ancho: de 450px a 600px */
+  max-width: 600px; 
+  margin: 0 auto; 
+  /* Aumenté un poco el padding para compensar el nuevo ancho */
+  padding: 50px 40px;
+  border-radius: 15px;
+  border: 1px solid rgba(255, 255, 255, 0.05);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+  
+  /* Flexbox para centrar todo en columna */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;
+  animation: fadeIn 0.8s ease-in-out;
+}
+
+/* Efecto hover en la tarjeta completa */
+.perfil:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.6);
+  border-color: #007bff;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* --- Imagen de Perfil --- */
+.perfil img {
+  /* Imagen un pelín más grande para el nuevo tamaño de tarjeta */
+  width: 160px;
+  height: 160px;
+  object-fit: cover; 
+  border-radius: 50%; 
+  margin-bottom: 25px;
+  
+  /* Borde doble simulado con sombras (Azul/Cian) */
+  border: 4px solid #2a2a2a; 
+  box-shadow: 0 0 0 3px #00d2ff, 0 10px 20px rgba(0, 210, 255, 0.3);
+  
+  transition: transform 0.4s ease;
+}
+
+.perfil:hover img {
+  transform: scale(1.05); /* Pequeño zoom al pasar el ratón */
+}
+
+/* --- Nombre del Usuario --- */
+.perfil h1 {
+  margin: 0 0 15px 0;
+  font-size: 2.5rem;
+  font-weight: 700;
+  
+  /* Gradiente Azul/Cian */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+/* --- Descripción / Biografía --- */
+.perfil p {
+  margin: 0 0 35px 0; /* Margen inferior para separar la descripción del botón */
+  color: #cccccc;
+  font-size: 1.1rem;
+  line-height: 1.6;
+  font-weight: 400;
+  max-width: 95%; /* Evita que el texto pegue con los bordes */
+}
+
+/* --- Botón "Editar Perfil" --- */
+.perfil input[type="button"] {
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  color: white;
+  border: none;
+  
+  padding: 12px 35px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px; /* Redondeado tipo píldora */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.perfil input[type="button"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+  filter: brightness(1.1); /* Brilla un poco al pasar el ratón */
+}
+
+.perfil input[type="button"]:active {
+  transform: translateY(1px); /* Efecto de click */
+}

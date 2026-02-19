@@ -1,5 +1,3 @@
-/* header.css */
-
 /* --- CONTENEDOR PRINCIPAL --- */
 .main-header {
   position: fixed;
@@ -49,7 +47,7 @@
   white-space: nowrap; /* Evita que el texto se rompa */
   
   /* Efecto degradado en el texto */
-  background: linear-gradient(45deg, #646cff, #61dafb);
+  background: linear-gradient(45deg, #007bff, #00d2ff); /* Ajustado a tus colores */
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -59,12 +57,14 @@
 .header-auth {
   display: flex;
   align-items: center;
-  gap: 15px; /* Espacio entre el saludo y el botón */
+  gap: 15px; /* Espacio entre el saludo, la foto y el botón */
 }
 
 /* Enlaces (quitamos subrayado) */
 .header-auth a {
   text-decoration: none;
+  display: flex;
+  align-items: center;
 }
 
 /* --- SALUDO ("Hola Pepe") --- */
@@ -75,11 +75,27 @@
   margin: 0;
 }
 
+/* --- FOTO DE PERFIL DEL USUARIO LOGUEADO --- */
+.foto_usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00d2ff; /* Borde cian que combina con tu web */
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.foto_usuario:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.5); /* Resplandor al pasar el ratón */
+}
+
 /* --- BOTÓN CERRAR SESIÓN (Estilo Borde Rojo) --- */
 .boton_cerrar_sesion {
   background-color: transparent;
-  border: 1px solid #ff4d4d;
-  color: #ff4d4d;
+  border: 1px solid #dc3545; /* Rojo peligro */
+  color: #dc3545;
   padding: 6px 16px;
   border-radius: 20px;
   cursor: pointer;
@@ -90,15 +106,15 @@
 }
 
 .boton_cerrar_sesion:hover {
-  background-color: #ff4d4d;
+  background-color: #dc3545;
   color: white;
-  box-shadow: 0 0 10px rgba(255, 77, 77, 0.4);
+  box-shadow: 0 0 10px rgba(220, 53, 69, 0.4);
 }
 
 /* --- BOTÓN INICIAR SESIÓN (Estilo Pastilla con Foto) --- */
 .login-btn {
   background-color: rgba(255, 255, 255, 0.08);
-  border: 1px solid rgba(100, 108, 255, 0.3);
+  border: 1px solid rgba(0, 210, 255, 0.3);
   color: #fff;
   padding: 4px 16px 4px 4px; /* Padding asimétrico para la foto */
   border-radius: 30px;
@@ -112,8 +128,8 @@
 }
 
 .login-btn:hover {
-  background-color: rgba(100, 108, 255, 0.15);
-  border-color: #646cff;
+  background-color: rgba(0, 210, 255, 0.15);
+  border-color: #00d2ff;
   transform: translateY(-1px);
 }
 
@@ -166,4 +182,56 @@
     border: none;
     background: transparent;
   }
+  
+  /* Ajustamos la foto de perfil para que sea un poco más pequeña en móvil */
+  .foto_usuario {
+    width: 35px;
+    height: 35px;
+  }
+}
+
+/* --- ENLACE AL PERFIL (Contiene Saludo y Foto) --- */
+.enlace_perfil {
+  display: flex;
+  align-items: center;
+  gap: 12px; /* Espacio entre el texto y la foto */
+  text-decoration: none;
+  padding: 4px 8px; /* Un poco de margen invisible para facilitar el clic */
+  border-radius: 30px; /* Por si le quieres poner fondo al hover luego */
+  transition: transform 0.2s ease;
+}
+
+/* Efecto opcional: Que todo el bloque se mueva un pelín al pasar el ratón */
+.enlace_perfil:hover {
+  transform: translateY(-2px);
+}
+
+/* --- SALUDO ("Hola Pepe") --- */
+.enlace_perfil h3 {
+  color: #e0e0e0;
+  font-size: 1rem;
+  font-weight: 500;
+  margin: 0;
+  transition: color 0.2s ease;
+}
+
+/* Hacemos que el nombre se ilumine en azul/cian al pasar el ratón por el enlace */
+.enlace_perfil:hover h3 {
+  color: #00d2ff; 
+}
+
+/* --- FOTO DE PERFIL DEL USUARIO LOGUEADO --- */
+.foto_usuario {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #00d2ff; /* Borde cian que combina con tu web */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+/* Efecto en la foto al hacer hover en CUALQUIER parte del enlace */
+.enlace_perfil:hover .foto_usuario {
+  transform: scale(1.1);
+  box-shadow: 0 0 10px rgba(0, 210, 255, 0.5);
 }

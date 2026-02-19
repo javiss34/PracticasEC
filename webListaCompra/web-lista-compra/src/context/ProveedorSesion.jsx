@@ -15,7 +15,7 @@ const ProveedorSesion = ({ children }) => {
   const datosusuarioInicial = {};
   const mensajeUsuarioInicial = "";
   const sesionIniciadaInicial = false;
-  const { obtener } = useSupabase();
+  const { ejecutar,obtener } = useSupabase();
 
   const [datosSesion, setDatosSesion] = useState(datosSesionInicial);
   const [datosUsuario, setDatosUsuario] = useState(datosusuarioInicial);
@@ -31,14 +31,24 @@ const ProveedorSesion = ({ children }) => {
     setDatosSesion({ ...datosSesion, [name]: value });
   };
 
+  const cargarRoles = async() => {
+    const consulta = obtener("roles");
+    await ejecutar(consulta);
+  }
+
   const obtenerRol = async (idUsuario) => {
-    const resultado = await obtener("roles").eq("id_rol", idUsuario);
+    const consulta = obtener("roles").eq("id_rol", idUsuario);
+    const resultado = await ejecutar(consulta)
     if (resultado.data.length > 0) {
       setEsAdmin(resultado.data[0].rol === "admin");
     } else {
       setEsAdmin(false);
     }
   };
+
+  const modifcarRol = async() => {
+
+  }
 
   const registrar = async () => {
     setMensajeUsuario(mensajeUsuarioInicial);
@@ -106,6 +116,7 @@ const ProveedorSesion = ({ children }) => {
     const suscripcion = supabaseConexion.auth.onAuthStateChange(
       (event, session) => {
         if (session) {
+          console.log(session)
           setDatosUsuario(session.user);
           obtenerRol(session.user.id);
           setSesionIniciada(true);

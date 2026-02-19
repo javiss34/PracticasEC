@@ -11,7 +11,6 @@ create trigger al_crear_usuario
   after insert on auth.users
   for each row execute procedure public.insertar_rol(); */
 
-
 /* create or replace function public.comprobar_admin()
 returns boolean as $$
 begin
@@ -32,19 +31,22 @@ import ProveedorSesion from "./context/ProveedorSesion.jsx";
 import ProveedorProductos from "./context/ProveedorProductos.jsx";
 import ProveedorListas from "./context/ProveedorListas.jsx";
 import Rutas from "./routes/Rutas.jsx";
+import ProveedorPerfiles from "./context/ProveedorPerfiles.jsx";
 
 function App() {
   return (
     <>
       <ProveedorSesion>
-        <ProveedorProductos>
-          <ProveedorListas>
-          <Header />
-          <Menu />
-          <Rutas />
-          <Footer />
-          </ProveedorListas>
-        </ProveedorProductos>
+        <ProveedorPerfiles>
+          <ProveedorProductos>
+            <ProveedorListas>
+              <Header />
+              <Menu />
+              <Rutas />
+              <Footer />
+            </ProveedorListas>
+          </ProveedorProductos>
+        </ProveedorPerfiles>
       </ProveedorSesion>
     </>
   );

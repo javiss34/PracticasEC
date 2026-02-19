@@ -1,12 +1,14 @@
 import React, { createContext, useEffect, useState } from "react";
 import { supabaseConexion } from "../supabase/supabase.js";
 import useSupabase from "../hooks/useSupabase.js";
+import useSesion from "../hooks/useSesion.js";
 
 const contextoListas = createContext();
 const ProveedorListas = ({ children }) => {
   const [listas, setListas] = useState([]);
   const { ejecutar, insertar, obtener, editar, eliminar, cargando } =
     useSupabase();
+  const {datosUsuario} = useSesion();
 
   const traerListas = async () => {
     const consulta = obtener("listas");
@@ -44,6 +46,7 @@ const ProveedorListas = ({ children }) => {
       const consultaAInsertar = insertar("lista_productos", {
         lista_id: lista_id,
         producto_id: producto_id,
+        usuario_id: datosUsuario.id,
         cantidad: 1,
       });
       await ejecutar(consultaAInsertar);

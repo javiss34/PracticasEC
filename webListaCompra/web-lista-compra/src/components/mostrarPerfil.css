@@ -1,0 +1,58 @@
+/* --- Contenedor Principal de la Vista de Perfil --- */
+.card-perfil {
+  max-width: 800px;
+  margin: 0 auto;
+  margin-top: 150px; /* Bajarlo del header */
+  padding: 20px;
+
+  /* Flexbox para alinear la tarjeta de perfil y el botón en una columna centrada */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px; /* Separación entre la tarjeta del perfil y el botón de editar */
+  
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* --- Botón "Editar Perfil" --- */
+.card-perfil input[type="button"] {
+  /* Mismo gradiente azul brillante del resto de la web */
+  background: linear-gradient(135deg, #007bff 0%, #00d2ff 100%);
+  color: white;
+  border: none;
+  
+  padding: 15px 40px;
+  font-size: 1.1rem;
+  font-weight: 700;
+  border-radius: 50px; /* Estilo píldora */
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  
+  cursor: pointer;
+  box-shadow: 0 5px 15px rgba(0, 123, 255, 0.3);
+  transition: transform 0.2s ease, box-shadow 0.2s ease, filter 0.2s ease;
+}
+
+.card-perfil input[type="button"]:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 123, 255, 0.5);
+  filter: brightness(1.1);
+}
+
+.card-perfil input[type="button"]:active {
+  transform: translateY(1px);
+}
+
+/* --- Estado Cargando --- */
+.mensaje_cargar {
+  color: #00d2ff;
+  font-size: 1.5rem;
+  letter-spacing: 2px;
+  animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}

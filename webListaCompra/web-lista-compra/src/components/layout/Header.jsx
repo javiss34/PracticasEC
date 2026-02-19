@@ -3,13 +3,19 @@ import "./header.css";
 import useSesion from "../../hooks/useSesion.js";
 import ConfirmacionBorrar from "../ConfirmacionBorrar.jsx";
 import { useState } from "react";
+import usePerfiles from "../../hooks/usePerfiles.js";
 
 const Header = () => {
   const { sesionIniciada, cerrarSesion, datosUsuario } = useSesion();
   const [mostrarConfirmacion, setMostrarConfirmacion] = useState(false);
   const navegar = useNavigate();
+  const { perfil } = usePerfiles();
 
-  const nombre = datosUsuario?.user_metadata?.nombre || "...Cargando";
+
+  const nombre = perfil?.nombre || "Usuario";
+  const fotoPerfil =
+    perfil?.imagen_url ||
+    "https://cdn-icons-png.flaticon.com/512/6326/6326055.png";
 
   return (
     <>
@@ -24,7 +30,10 @@ const Header = () => {
         <div className="header-auth">
           {sesionIniciada ? (
             <>
+              <Link to={`/perfil/${datosUsuario?.id}`} className="enlace_perfil">
               <h3>Hola, {nombre}</h3>
+              <img src={fotoPerfil} alt="Mi perfil" className="foto_usuario"/>
+              </Link>
               <input
                 type="button"
                 id="boton_cerrar_sesion"

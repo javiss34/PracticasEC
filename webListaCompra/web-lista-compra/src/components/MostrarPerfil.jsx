@@ -1,35 +1,16 @@
-import React, { useEffect, useState } from "react";
-import useSesion from "../hooks/useSesion";
-import { useParams } from "react-router-dom";
+import React from 'react'
+import Perfil from './Perfil'
+import usePerfiles from '../hooks/usePerfiles'
+import './mostrarPerfil.css'
 
 const MostrarPerfil = () => {
-  const { id } = useParams();
-  const { datosUsuario } = useSesion();
-  const perfilInicial =  {
-    nombre: "",
-    imagen: "",
-    descripcion: ""
-  }
-  const [perfil,setPerfil] = useState(perfilInicial)
-
-  useEffect(() => {
-    if(datosUsuario){
-        setPerfil({
-            nombre: datosUsuario.user_metadata?.nombre
-        })
-    }
-  })
+    const{perfil} = usePerfiles();
 
   return (
-    <div className="contenedor_perfil">
-      <form>
-        <label htmlFor="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre"/>
-        <label htmlFor="imagen_perfil">Imagen de perfil</label>
-        <input type="url" />
-      </form>
+    <div className='card-perfil'>
+        {!perfil ? "...CARGANDO" : <Perfil perfil={perfil}/>}
     </div>
-  );
-};
+  )
+}
 
-export default MostrarPerfil;
+export default MostrarPerfil

@@ -11,6 +11,7 @@ import MostrarListas from "../components/MostrarListas.jsx";
 import DetallesLista from "../components/DetallesLista.jsx";
 import AñadirProductosALista from "../components/AñadirProductosALista.jsx";
 import MostrarPerfil from "../components/MostrarPerfil.jsx";
+import EditarPerfil from "../components/EditarPerfil.jsx";
 
 const Rutas = () => {
   return (
@@ -30,6 +31,7 @@ const Rutas = () => {
         <Route path="/lista-detalles/:id" element={<DetallesLista/>}/>
         <Route path="/insertar-producto/:id" element={<AñadirProductosALista/>}/>
         <Route path="/perfil/:id" element={<MostrarPerfil/>}/>
+        <Route path="/editar-perfil/:id" element={<EditarPerfil/>}/>
       </Routes>
     </>
   );

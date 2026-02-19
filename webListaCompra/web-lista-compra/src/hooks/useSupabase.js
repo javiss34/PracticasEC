@@ -40,9 +40,14 @@ const useSupabase = () => {
   const eliminar = (tabla,id) => {
     return supabaseConexion.from(tabla).delete().eq("id",id);
   }
-  const editar = (tabla,datos) => {
-    return supabaseConexion.from(tabla).update(datos).eq("id",datos.id);
+
+  /* he tenido que añadir a la función un parametro opcional, por si el id se llama diferente de id
+  como es en el caso de perfil_id, sé que lo suyo es que sea un dato que haya que pasar siempre como parametro, pero
+  sino tendria que cambiar muchas partes de mi web,  así lo addapto mejor */
+  const editar = (tabla,datos,columnaId = "id") => {
+    return supabaseConexion.from(tabla).update(datos).eq(columnaId,datos[columnaId]);
   }
+
 
   return {
     cargando,
